@@ -33,12 +33,12 @@ void Tetris::reset()
 
     table.reset();
 
-
     keyMap.reset();
 
     nextRot = 0.0f;
     nextAccel = 2.0f;
 
+    tetroFactory.reset();
     nextTetro = tetroFactory.createTetro(false);
 
     level = 0;
@@ -82,6 +82,7 @@ void Tetris::rotate()
 {
     keyMap.setKey(KeyMap::ROTATE);
 }
+
 
 void Tetris::rotateTetro()
 {

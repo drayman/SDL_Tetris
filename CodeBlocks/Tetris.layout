@@ -41,31 +41,31 @@
 		<Cursor position="210" topLine="0" />
 	</File>
 	<File name="../Source/game/table.cpp" open="0" top="0" tabpos="5">
-		<Cursor position="3496" topLine="156" />
+		<Cursor position="3496" topLine="12" />
 	</File>
 	<File name="../Source/game/table.h" open="0" top="0" tabpos="3">
-		<Cursor position="636" topLine="7" />
+		<Cursor position="636" topLine="1" />
 	</File>
-	<File name="../Source/game/tetris.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="310" topLine="0" />
+	<File name="../Source/game/tetris.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="1787" topLine="87" />
 	</File>
 	<File name="../Source/game/tetris.h" open="1" top="0" tabpos="3">
 		<Cursor position="663" topLine="0" />
 	</File>
-	<File name="../Source/game/tetromino.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="2491" topLine="95" />
+	<File name="../Source/game/tetromino.cpp" open="1" top="1" tabpos="6">
+		<Cursor position="956" topLine="0" />
 	</File>
-	<File name="../Source/game/tetromino.h" open="0" top="0" tabpos="0">
-		<Cursor position="512" topLine="5" />
+	<File name="../Source/game/tetromino.h" open="1" top="0" tabpos="7">
+		<Cursor position="622" topLine="5" />
 	</File>
-	<File name="../Source/gfx/skybox.cpp" open="1" top="1" tabpos="5">
-		<Cursor position="459" topLine="0" />
+	<File name="../Source/gfx/skybox.cpp" open="0" top="0" tabpos="5">
+		<Cursor position="900" topLine="0" />
 	</File>
-	<File name="../Source/gfx/skybox.h" open="1" top="0" tabpos="4">
-		<Cursor position="478" topLine="0" />
+	<File name="../Source/gfx/skybox.h" open="0" top="0" tabpos="4">
+		<Cursor position="278" topLine="0" />
 	</File>
-	<File name="../Source/main.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="18566" topLine="595" />
+	<File name="../Source/main.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="614" topLine="12" />
 	</File>
 	<File name="../Source/mesh/mesh.h" open="0" top="0" tabpos="0">
 		<Cursor position="0" topLine="7" />
@@ -85,7 +85,7 @@
 	<File name="../Source/texture/font.h" open="0" top="0" tabpos="0">
 		<Cursor position="1230" topLine="23" />
 	</File>
-	<File name="../Source/texture/texture.h" open="1" top="0" tabpos="6">
+	<File name="../Source/texture/texture.h" open="0" top="0" tabpos="6">
 		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="../Source/texture/texture_manager.cpp" open="0" top="0" tabpos="0">

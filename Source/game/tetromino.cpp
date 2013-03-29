@@ -2,6 +2,19 @@
 
 #include "game/tetromino.h"
 
+/*
+    OpenGL use:       C-arrays are:
+
+        ^                   y
+      y |                 +--->
+        +--->           x |
+          x               v
+
+    To keep the design simple, i use GL style,
+    and replace x and y later in drawing then
+    process the models with inverted y axis...
+*/
+
 std::unique_ptr<Tetromino> TetroFactory::createTetro(bool extended)
 {
     /// Create the product
@@ -9,30 +22,39 @@ std::unique_ptr<Tetromino> TetroFactory::createTetro(bool extended)
     std::unique_ptr<Tetromino> tetro_ptr(new Tetromino());
 
 
-    //  OpenGL use:       C-arrays are:
-    //
-    //      ^                   y
-    //    y |                 +--->
-    //      +--->           x |
-    //        x               v
-    //
-    //  To keep the design simple, i use GL style,
-    //  and replace x and y later in drawing then
-    //  process the models with inverted y axis...
+    /// Random generator balanced algorythm
+    unsigned int tetro_max = tetro_count[0],
+                 tetro_id = 0;
 
-    /// Fill our Tetromino with values
-    unsigned char tetro_id = rand()%7;
+    for (unsigned int i = 1; i < NUMBER_OF_TETROMINOS; i++) {
+        if (tetro_count[i]>tetro_max) tetro_max = tetro_count[i];
+    }
+
+    const unsigned int DELTA = 2;
+
+    unsigned int interval = (tetro_max + DELTA) * NUMBER_OF_TETROMINOS - tetro_sum,
+                 random = rand() % interval;
+
+    while (random >= tetro_max + DELTA - tetro_count[tetro_id])
+    {
+        random -= (tetro_max + DELTA - tetro_count[tetro_id]);
+        tetro_id++;
+    }
+
+    tetro_count[tetro_id]++;
+    tetro_sum++;
 
 
-    // MinGW cross 4.6 does not support list initializer assignments with c arrays...
-    std::vector <unsigned char> shape;
-
-
+    /// Fill our brand new tetro with values
     float color_r=0.0f;
     float color_g=0.0f;
     float color_b=0.0f;
     float color_a=0.0f;
+
     std::shared_ptr<Texture> texture_ptr;
+
+    // MinGW cross 4.6 does not support list initializer assignments with c arrays...
+    std::vector <unsigned char> shape;
 
     switch (tetro_id) {
 
@@ -193,5 +215,15 @@ std::unique_ptr<Tetromino> TetroFactory::createTetro(bool extended)
             else
                 tetro_ptr->shape[x][y] = std::unique_ptr<Brick>(new Brick());
 
+
     return tetro_ptr;
+}
+
+
+void TetroFactory::reset()
+{
+
+    tetro_sum = 0;
+
+    for (int i = 0; i < NUMBER_OF_TETROMINOS; i++) tetro_count[i] = 0;
 }

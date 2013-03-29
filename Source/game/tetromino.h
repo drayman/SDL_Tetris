@@ -7,6 +7,7 @@
 
 #include <memory>
 
+#define NUMBER_OF_TETROMINOS 7
 
 class TetroFactory;
 
@@ -39,13 +40,20 @@ public:
         TextureManager& texture_manager
     ) :
         texmanager(texture_manager)
-    {}
+    {
+        reset();
+    }
 
     std::unique_ptr<Tetromino> createTetro(bool extended);
+
+    void reset();
 
 private:
 
     TextureManager& texmanager;
+
+    unsigned int tetro_count[NUMBER_OF_TETROMINOS];
+    unsigned int tetro_sum;
 
 };
 
