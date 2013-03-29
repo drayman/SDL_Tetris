@@ -1,0 +1,1 @@
+INDEX VERSION 1.126+/home/szeke/Desktop/DIGITAL/Project/Android-9-arm/.metadata/.plugins/org.eclipse.jdt.core

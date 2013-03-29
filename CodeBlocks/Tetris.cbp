@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Tetris" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug-Linux64">
+				<Option output="../Linux64/bin/Tetris" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="../Linux64/bin/" />
+				<Option object_output="../Linux64/obj/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-std=c++0x" />
+					<Add option="-D_REENTRANT" />
+					<Add option="-DDEBUG_MODE" />
+					<Add directory="../Linux64/include" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../Linux64/include" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-lSDL2" />
+					<Add option="-lGL" />
+					<Add option="-lpthread" />
+					<Add option="-Wl,-rpath -Wl,../lib" />
+					<Add directory="../Linux64/lib" />
+				</Linker>
+			</Target>
+			<Target title="Debug-Win32">
+				<Option output="../Win32/bin/Tetris.exe" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="../Win32/bin/" />
+				<Option object_output="../Win32/obj/" />
+				<Option type="1" />
+				<Option compiler="mingw32_compiler" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-std=c++0x" />
+					<Add option="-Dmain=SDL_main" />
+					<Add option="-DDEBUG_MODE" />
+					<Add directory="../Win32/include" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../Win32/include" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-lmingw32" />
+					<Add option="-lSDL2main -lSDL2" />
+					<Add option="-mwindows" />
+					<Add option="-lopengl32" />
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add directory="../Win32/lib" />
+				</Linker>
+			</Target>
+			<Target title="Debug-Win64">
+				<Option output="../Win64/bin/Tetris.exe" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="../Win64/bin/" />
+				<Option object_output="../Win64/obj/" />
+				<Option type="1" />
+				<Option compiler="mingw64_compiler" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-std=c++0x" />
+					<Add option="-Dmain=SDL_main" />
+					<Add option="-DDEBUG_MODE" />
+					<Add directory="../Win64/include" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../Win64/include" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-lmingw32" />
+					<Add option="-lSDL2main -lSDL2" />
+					<Add option="-mwindows" />
+					<Add option="-lopengl32" />
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add directory="../Win64/lib" />
+				</Linker>
+			</Target>
+			<Target title="Release-Linux64">
+				<Option output="../Linux64/bin/Tetris" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="../Linux64/bin/" />
+				<Option object_output="../Linux64/obj/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-std=c++0x" />
+					<Add option="-D_REENTRANT" />
+					<Add directory="../Linux64/include" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../Linux64/include" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-lSDL2" />
+					<Add option="-lGL" />
+					<Add option="-lpthread" />
+					<Add option="-Wl,-rpath -Wl,../lib" />
+					<Add directory="../Linux64/lib" />
+				</Linker>
+			</Target>
+			<Target title="Release-Win32">
+				<Option output="../Win32/bin/Tetris.exe" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="../Win32/bin/" />
+				<Option object_output="../Win32/obj/" />
+				<Option type="1" />
+				<Option compiler="mingw32_compiler" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-std=c++0x" />
+					<Add option="-Dmain=SDL_main" />
+					<Add directory="../Win32/include" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../Win32/include" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-lmingw32" />
+					<Add option="-lSDL2main -lSDL2" />
+					<Add option="-mwindows" />
+					<Add option="-lopengl32" />
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add directory="../Win32/lib" />
+				</Linker>
+			</Target>
+			<Target title="Release-Win64">
+				<Option output="../Win64/bin/Tetris.exe" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="../Win64/bin/" />
+				<Option object_output="../Win64/obj/" />
+				<Option type="1" />
+				<Option compiler="mingw64_compiler" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-std=c++0x" />
+					<Add option="-Dmain=SDL_main" />
+					<Add directory="../Win64/include" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../Win64/include" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-lmingw32" />
+					<Add option="-lSDL2main -lSDL2" />
+					<Add option="-mwindows" />
+					<Add option="-lopengl32" />
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add directory="../Win64/lib" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add directory="../Source" />
+		</Compiler>
+		<Unit filename="../Source/animation/alpha_animation.cpp" />
+		<Unit filename="../Source/animation/alpha_animation.h" />
+		<Unit filename="../Source/animation/animation.cpp" />
+		<Unit filename="../Source/animation/animation.h" />
+		<Unit filename="../Source/animation/rotate_animation.cpp" />
+		<Unit filename="../Source/animation/rotate_animation.h" />
+		<Unit filename="../Source/animation/translate_animation.cpp" />
+		<Unit filename="../Source/animation/translate_animation.h" />
+		<Unit filename="../Source/game/animated_text.cpp" />
+		<Unit filename="../Source/game/animated_text.h" />
+		<Unit filename="../Source/game/brick.h" />
+		<Unit filename="../Source/game/key_map.cpp" />
+		<Unit filename="../Source/game/key_map.h" />
+		<Unit filename="../Source/game/message_queue.cpp" />
+		<Unit filename="../Source/game/message_queue.h" />
+		<Unit filename="../Source/game/table.cpp" />
+		<Unit filename="../Source/game/table.h" />
+		<Unit filename="../Source/game/tetris.cpp" />
+		<Unit filename="../Source/game/tetris.h" />
+		<Unit filename="../Source/game/tetromino.cpp" />
+		<Unit filename="../Source/game/tetromino.h" />
+		<Unit filename="../Source/gfx/skybox.cpp" />
+		<Unit filename="../Source/gfx/skybox.h" />
+		<Unit filename="../Source/log/desktop_log.cpp" />
+		<Unit filename="../Source/log/desktop_log.h" />
+		<Unit filename="../Source/log/log.h" />
+		<Unit filename="../Source/main.cpp" />
+		<Unit filename="../Source/mesh/button_mesh.h" />
+		<Unit filename="../Source/mesh/cube_mesh.h" />
+		<Unit filename="../Source/mesh/mesh.cpp" />
+		<Unit filename="../Source/mesh/mesh.h" />
+		<Unit filename="../Source/mesh/panel_mesh.h" />
+		<Unit filename="../Source/mesh/skybox_mesh.h" />
+		<Unit filename="../Source/platform.h" />
+		<Unit filename="../Source/system/display.cpp" />
+		<Unit filename="../Source/system/display.h" />
+		<Unit filename="../Source/system/manager.h" />
+		<Unit filename="../Source/system/projection.cpp" />
+		<Unit filename="../Source/system/projection.h" />
+		<Unit filename="../Source/texture/BMP_texture.cpp" />
+		<Unit filename="../Source/texture/BMP_texture.h" />
+		<Unit filename="../Source/texture/TGA_texture.cpp" />
+		<Unit filename="../Source/texture/TGA_texture.h" />
+		<Unit filename="../Source/texture/font.cpp" />
+		<Unit filename="../Source/texture/font.h" />
+		<Unit filename="../Source/texture/texture.cpp" />
+		<Unit filename="../Source/texture/texture.h" />
+		<Unit filename="../Source/texture/texture_manager.cpp" />
+		<Unit filename="../Source/texture/texture_manager.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

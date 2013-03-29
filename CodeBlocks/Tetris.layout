@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Debug-Linux64" />
+	<File name="../Source/animation/alpha_animation.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="46" topLine="0" />
+	</File>
+	<File name="../Source/animation/alpha_animation.h" open="0" top="0" tabpos="0">
+		<Cursor position="139" topLine="0" />
+	</File>
+	<File name="../Source/animation/animation.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="1361" topLine="10" />
+	</File>
+	<File name="../Source/animation/animation.h" open="0" top="0" tabpos="0">
+		<Cursor position="794" topLine="1" />
+	</File>
+	<File name="../Source/animation/rotate_animation.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="513" topLine="0" />
+	</File>
+	<File name="../Source/animation/rotate_animation.h" open="0" top="0" tabpos="0">
+		<Cursor position="342" topLine="0" />
+	</File>
+	<File name="../Source/animation/translate_animation.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="67" topLine="0" />
+	</File>
+	<File name="../Source/animation/translate_animation.h" open="0" top="0" tabpos="0">
+		<Cursor position="326" topLine="0" />
+	</File>
+	<File name="../Source/game/animated_text.cpp" open="0" top="0" tabpos="5">
+		<Cursor position="622" topLine="8" />
+	</File>
+	<File name="../Source/game/animated_text.h" open="0" top="0" tabpos="4">
+		<Cursor position="165" topLine="0" />
+	</File>
+	<File name="../Source/game/brick.h" open="0" top="0" tabpos="0">
+		<Cursor position="1114" topLine="10" />
+	</File>
+	<File name="../Source/game/message_queue.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="477" topLine="0" />
+	</File>
+	<File name="../Source/game/message_queue.h" open="0" top="0" tabpos="3">
+		<Cursor position="210" topLine="0" />
+	</File>
+	<File name="../Source/game/table.cpp" open="0" top="0" tabpos="5">
+		<Cursor position="3496" topLine="156" />
+	</File>
+	<File name="../Source/game/table.h" open="0" top="0" tabpos="3">
+		<Cursor position="636" topLine="7" />
+	</File>
+	<File name="../Source/game/tetris.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="310" topLine="0" />
+	</File>
+	<File name="../Source/game/tetris.h" open="1" top="0" tabpos="3">
+		<Cursor position="663" topLine="0" />
+	</File>
+	<File name="../Source/game/tetromino.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="2491" topLine="95" />
+	</File>
+	<File name="../Source/game/tetromino.h" open="0" top="0" tabpos="0">
+		<Cursor position="512" topLine="5" />
+	</File>
+	<File name="../Source/gfx/skybox.cpp" open="1" top="1" tabpos="5">
+		<Cursor position="459" topLine="0" />
+	</File>
+	<File name="../Source/gfx/skybox.h" open="1" top="0" tabpos="4">
+		<Cursor position="478" topLine="0" />
+	</File>
+	<File name="../Source/main.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="18566" topLine="595" />
+	</File>
+	<File name="../Source/mesh/mesh.h" open="0" top="0" tabpos="0">
+		<Cursor position="0" topLine="7" />
+	</File>
+	<File name="../Source/mesh/skybox_mesh.h" open="0" top="0" tabpos="0">
+		<Cursor position="1044" topLine="30" />
+	</File>
+	<File name="../Source/system/display.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="0" topLine="63" />
+	</File>
+	<File name="../Source/system/manager.h" open="0" top="0" tabpos="0">
+		<Cursor position="142" topLine="0" />
+	</File>
+	<File name="../Source/texture/font.cpp" open="0" top="0" tabpos="3">
+		<Cursor position="20" topLine="0" />
+	</File>
+	<File name="../Source/texture/font.h" open="0" top="0" tabpos="0">
+		<Cursor position="1230" topLine="23" />
+	</File>
+	<File name="../Source/texture/texture.h" open="1" top="0" tabpos="6">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="../Source/texture/texture_manager.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="82" topLine="0" />
+	</File>
+	<File name="../Source/texture/texture_manager.h" open="0" top="0" tabpos="0">
+		<Cursor position="53" topLine="0" />
+	</File>
+</CodeBlocks_layout_file>
