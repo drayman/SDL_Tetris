@@ -32,6 +32,9 @@ LOCAL_SRC_FILES := SDL_android_main.cpp                            \
 		           ../../Source/game/table.cpp                     \
 				   ../../Source/game/tetromino.cpp                 \
 				   ../../Source/game/tetris.cpp                    \
+				   ../../Source/game/message_queue.cpp             \
+				   ../../Source/game/animated_text.cpp             \
+				   ../../Source/gfx/skybox.cpp                     \
 		           ../../Source/mesh/mesh.cpp                      \
 		           ../../Source/main.cpp
 

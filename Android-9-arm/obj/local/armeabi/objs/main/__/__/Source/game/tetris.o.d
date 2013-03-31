@@ -1,60 +1,34 @@
 obj/local/armeabi/objs/main/__/__/Source/game/tetris.o: \
- jni/../../Source/game/tetris.cpp jni/../../Source/log/log.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/android/log.h \
- jni/../../Source/game/translate_animation.h \
- jni/../../Source/game/animation.h \
- jni/../../Source/game/rotate_animation.h jni/../../Source/game/tetris.h \
- jni/../../Source/mesh/cube_mesh.h jni/../../Source/mesh/mesh.h \
- jni/../../Source/platform.h \
+ jni/../../Source/game/tetris.cpp \
+ jni/../../Source/animation/translate_animation.h \
+ jni/../../Source/animation/animation.h \
+ jni/../../Source/animation/rotate_animation.h \
+ jni/../../Source/animation/alpha_animation.h \
+ jni/../../Source/game/animated_text.h jni/../../Source/texture/font.h \
+ /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/memory \
+ jni/../../Source/texture/texture_manager.h \
+ jni/../../Source/system/resource_manager.h \
+ /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/map \
+ /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/string \
+ jni/../../Source/texture/BMP_texture.h \
+ jni/../../Source/texture/texture.h jni/../../Source/platform.h \
  /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/GLES/gl.h \
  /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/GLES/glplatform.h \
  /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/KHR/khrplatform.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/stdint.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/sys/_types.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/machine/_types.h \
  jni/../include/SDL2/SDL.h jni/../include/SDL2/SDL_main.h \
  jni/../include/SDL2/SDL_stdinc.h jni/../include/SDL2/SDL_config.h \
  jni/../include/SDL2/SDL_platform.h jni/../include/SDL2/begin_code.h \
  jni/../include/SDL2/close_code.h \
  jni/../include/SDL2/SDL_config_android.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/sys/types.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/sys/cdefs.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/sys/cdefs_elf.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/android/api-level.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/linux/posix_types.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/linux/stddef.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/linux/compiler.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/asm/posix_types.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/asm/types.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/linux/types.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/machine/kernel.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/sys/sysmacros.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/stdio.h \
  /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/stdlib.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/string.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/malloc.h \
  /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/alloca.h \
  /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/strings.h \
  /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/memory.h \
  /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/inttypes.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/ctype.h \
  /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/math.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/limits.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/sys/limits.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/linux/limits.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/machine/internal_types.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/machine/limits.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/sys/syslimits.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/asm/page.h \
- jni/../include/SDL2/SDL_assert.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/signal.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/asm/signal.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/asm-generic/signal.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/asm/sigcontext.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/asm/siginfo.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/asm-generic/siginfo.h \
- jni/../include/SDL2/SDL_atomic.h jni/../include/SDL2/SDL_audio.h \
- jni/../include/SDL2/SDL_error.h jni/../include/SDL2/SDL_endian.h \
+ jni/../include/SDL2/SDL_assert.h jni/../include/SDL2/SDL_atomic.h \
+ jni/../include/SDL2/SDL_audio.h jni/../include/SDL2/SDL_error.h \
+ jni/../include/SDL2/SDL_endian.h \
  /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/endian.h \
  /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/sys/endian.h \
  jni/../include/SDL2/SDL_mutex.h jni/../include/SDL2/SDL_thread.h \
@@ -71,34 +45,42 @@ obj/local/armeabi/objs/main/__/__/Source/game/tetris.o: \
  jni/../include/SDL2/SDL_log.h jni/../include/SDL2/SDL_messagebox.h \
  jni/../include/SDL2/SDL_power.h jni/../include/SDL2/SDL_render.h \
  jni/../include/SDL2/SDL_system.h jni/../include/SDL2/SDL_timer.h \
- jni/../include/SDL2/SDL_version.h \
+ jni/../include/SDL2/SDL_version.h jni/../../Source/texture/TGA_texture.h \
  /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/vector \
- jni/../../Source/game/tetromino.h jni/../../Source/game/brick.h \
- /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/memory \
- jni/../../Source/texture/texture.h \
- /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/string \
+ /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/sstream \
+ jni/../../Source/game/tetris.h jni/../../Source/mesh/cube_mesh.h \
+ jni/../../Source/mesh/mesh.h jni/../../Source/game/tetromino.h \
+ jni/../../Source/game/brick.h jni/../../Source/texture/texture.h \
  jni/../../Source/texture/texture_manager.h \
- jni/../../Source/system/manager.h \
- /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/map \
- jni/../../Source/texture/BMP_texture.h \
- jni/../../Source/texture/texture.h \
- jni/../../Source/texture/TGA_texture.h jni/../../Source/game/key_map.h
+ jni/../../Source/game/key_map.h jni/../../Source/game/table.h \
+ jni/../../Source/game/message_queue.h \
+ /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/queue
 
-jni/../../Source/log/log.h:
+jni/../../Source/animation/translate_animation.h:
 
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/android/log.h:
+jni/../../Source/animation/animation.h:
 
-jni/../../Source/game/translate_animation.h:
+jni/../../Source/animation/rotate_animation.h:
 
-jni/../../Source/game/animation.h:
+jni/../../Source/animation/alpha_animation.h:
 
-jni/../../Source/game/rotate_animation.h:
+jni/../../Source/game/animated_text.h:
 
-jni/../../Source/game/tetris.h:
+jni/../../Source/texture/font.h:
 
-jni/../../Source/mesh/cube_mesh.h:
+/home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/memory:
 
-jni/../../Source/mesh/mesh.h:
+jni/../../Source/texture/texture_manager.h:
+
+jni/../../Source/system/resource_manager.h:
+
+/home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/map:
+
+/home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/string:
+
+jni/../../Source/texture/BMP_texture.h:
+
+jni/../../Source/texture/texture.h:
 
 jni/../../Source/platform.h:
 
@@ -107,12 +89,6 @@ jni/../../Source/platform.h:
 /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/GLES/glplatform.h:
 
 /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/KHR/khrplatform.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/stdint.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/sys/_types.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/machine/_types.h:
 
 jni/../include/SDL2/SDL.h:
 
@@ -130,37 +106,7 @@ jni/../include/SDL2/close_code.h:
 
 jni/../include/SDL2/SDL_config_android.h:
 
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/sys/types.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/sys/cdefs.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/sys/cdefs_elf.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/android/api-level.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/linux/posix_types.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/linux/stddef.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/linux/compiler.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/asm/posix_types.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/asm/types.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/linux/types.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/machine/kernel.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/sys/sysmacros.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/stdio.h:
-
 /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/stdlib.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/string.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/malloc.h:
 
 /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/alloca.h:
 
@@ -170,37 +116,9 @@ jni/../include/SDL2/SDL_config_android.h:
 
 /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/inttypes.h:
 
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/ctype.h:
-
 /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/math.h:
 
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/limits.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/sys/limits.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/linux/limits.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/machine/internal_types.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/machine/limits.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/sys/syslimits.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/asm/page.h:
-
 jni/../include/SDL2/SDL_assert.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/signal.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/asm/signal.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/asm-generic/signal.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/asm/sigcontext.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/asm/siginfo.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/asm-generic/siginfo.h:
 
 jni/../include/SDL2/SDL_atomic.h:
 
@@ -272,28 +190,30 @@ jni/../include/SDL2/SDL_timer.h:
 
 jni/../include/SDL2/SDL_version.h:
 
+jni/../../Source/texture/TGA_texture.h:
+
 /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/vector:
+
+/home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/sstream:
+
+jni/../../Source/game/tetris.h:
+
+jni/../../Source/mesh/cube_mesh.h:
+
+jni/../../Source/mesh/mesh.h:
 
 jni/../../Source/game/tetromino.h:
 
 jni/../../Source/game/brick.h:
 
-/home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/memory:
-
 jni/../../Source/texture/texture.h:
-
-/home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/string:
 
 jni/../../Source/texture/texture_manager.h:
 
-jni/../../Source/system/manager.h:
-
-/home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/map:
-
-jni/../../Source/texture/BMP_texture.h:
-
-jni/../../Source/texture/texture.h:
-
-jni/../../Source/texture/TGA_texture.h:
-
 jni/../../Source/game/key_map.h:
+
+jni/../../Source/game/table.h:
+
+jni/../../Source/game/message_queue.h:
+
+/home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/queue:

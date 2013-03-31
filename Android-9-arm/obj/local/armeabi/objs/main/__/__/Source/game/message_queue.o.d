@@ -1,10 +1,14 @@
-obj/local/armeabi/objs/main/__/__/Source/texture/texture_manager.o: \
- jni/../../Source/texture/texture_manager.cpp \
- /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/stdexcept \
+obj/local/armeabi/objs/main/__/__/Source/game/message_queue.o: \
+ jni/../../Source/game/message_queue.cpp \
+ jni/../../Source/game/message_queue.h \
+ /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/queue \
+ jni/../../Source/game/animated_text.h \
+ jni/../../Source/animation/animation.h jni/../../Source/texture/font.h \
+ /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/memory \
  jni/../../Source/texture/texture_manager.h \
  jni/../../Source/system/resource_manager.h \
  /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/map \
- /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/memory \
+ /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/string \
  jni/../../Source/texture/BMP_texture.h \
  jni/../../Source/texture/texture.h jni/../../Source/platform.h \
  /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/GLES/gl.h \
@@ -40,11 +44,19 @@ obj/local/armeabi/objs/main/__/__/Source/texture/texture_manager.o: \
  jni/../include/SDL2/SDL_log.h jni/../include/SDL2/SDL_messagebox.h \
  jni/../include/SDL2/SDL_power.h jni/../include/SDL2/SDL_render.h \
  jni/../include/SDL2/SDL_system.h jni/../include/SDL2/SDL_timer.h \
- jni/../include/SDL2/SDL_version.h jni/../../Source/texture/TGA_texture.h \
- jni/../../Source/log/log.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/android/log.h
+ jni/../include/SDL2/SDL_version.h jni/../../Source/texture/TGA_texture.h
 
-/home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/stdexcept:
+jni/../../Source/game/message_queue.h:
+
+/home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/queue:
+
+jni/../../Source/game/animated_text.h:
+
+jni/../../Source/animation/animation.h:
+
+jni/../../Source/texture/font.h:
+
+/home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/memory:
 
 jni/../../Source/texture/texture_manager.h:
 
@@ -52,7 +64,7 @@ jni/../../Source/system/resource_manager.h:
 
 /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/map:
 
-/home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/memory:
+/home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/string:
 
 jni/../../Source/texture/BMP_texture.h:
 
@@ -167,7 +179,3 @@ jni/../include/SDL2/SDL_timer.h:
 jni/../include/SDL2/SDL_version.h:
 
 jni/../../Source/texture/TGA_texture.h:
-
-jni/../../Source/log/log.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/android/log.h:

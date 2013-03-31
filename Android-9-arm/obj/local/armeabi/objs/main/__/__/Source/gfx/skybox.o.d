@@ -1,5 +1,6 @@
-obj/local/armeabi/objs/main/__/__/Source/main.o: \
- jni/../../Source/main.cpp jni/../../Source/platform.h \
+obj/local/armeabi/objs/main/__/__/Source/gfx/skybox.o: \
+ jni/../../Source/gfx/skybox.cpp jni/../../Source/gfx/skybox.h \
+ jni/../../Source/texture/texture.h jni/../../Source/platform.h \
  /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/GLES/gl.h \
  /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/GLES/glplatform.h \
  /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/KHR/khrplatform.h \
@@ -65,31 +66,15 @@ obj/local/armeabi/objs/main/__/__/Source/main.o: \
  jni/../include/SDL2/SDL_log.h jni/../include/SDL2/SDL_messagebox.h \
  jni/../include/SDL2/SDL_power.h jni/../include/SDL2/SDL_render.h \
  jni/../include/SDL2/SDL_system.h jni/../include/SDL2/SDL_timer.h \
- jni/../include/SDL2/SDL_version.h jni/../../Source/log/log.h \
- /home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/android/log.h \
- jni/../../Source/texture/texture.h jni/../../Source/platform.h \
+ jni/../include/SDL2/SDL_version.h \
  /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/string \
- jni/../../Source/texture/texture_manager.h \
- jni/../../Source/system/resource_manager.h \
- /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/map \
- /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/memory \
- jni/../../Source/texture/BMP_texture.h \
- jni/../../Source/texture/texture.h \
- jni/../../Source/texture/TGA_texture.h jni/../../Source/texture/font.h \
- jni/../../Source/texture/texture_manager.h jni/../../Source/gfx/skybox.h \
- jni/../../Source/texture/texture.h jni/../../Source/mesh/skybox_mesh.h \
- jni/../../Source/mesh/mesh.h \
+ jni/../../Source/mesh/skybox_mesh.h jni/../../Source/mesh/mesh.h \
  /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/vector \
- jni/../../Source/mesh/panel_mesh.h jni/../../Source/mesh/button_mesh.h \
- jni/../../Source/system/display.h jni/../../Source/game/tetris.h \
- jni/../../Source/mesh/cube_mesh.h jni/../../Source/game/tetromino.h \
- jni/../../Source/game/brick.h jni/../../Source/animation/animation.h \
- jni/../../Source/texture/texture_manager.h \
- jni/../../Source/game/key_map.h jni/../../Source/game/table.h \
- jni/../../Source/game/message_queue.h \
- /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/queue \
- jni/../../Source/game/animated_text.h jni/../../Source/texture/font.h \
- jni/../../Source/menu/menu_set.h jni/../../Source/menu/menu_button.h
+ /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/memory
+
+jni/../../Source/gfx/skybox.h:
+
+jni/../../Source/texture/texture.h:
 
 jni/../../Source/platform.h:
 
@@ -263,37 +248,7 @@ jni/../include/SDL2/SDL_timer.h:
 
 jni/../include/SDL2/SDL_version.h:
 
-jni/../../Source/log/log.h:
-
-/home/szeke/Android/ndk/platforms/android-14/arch-arm/usr/include/android/log.h:
-
-jni/../../Source/texture/texture.h:
-
-jni/../../Source/platform.h:
-
 /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/string:
-
-jni/../../Source/texture/texture_manager.h:
-
-jni/../../Source/system/resource_manager.h:
-
-/home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/map:
-
-/home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/memory:
-
-jni/../../Source/texture/BMP_texture.h:
-
-jni/../../Source/texture/texture.h:
-
-jni/../../Source/texture/TGA_texture.h:
-
-jni/../../Source/texture/font.h:
-
-jni/../../Source/texture/texture_manager.h:
-
-jni/../../Source/gfx/skybox.h:
-
-jni/../../Source/texture/texture.h:
 
 jni/../../Source/mesh/skybox_mesh.h:
 
@@ -301,36 +256,4 @@ jni/../../Source/mesh/mesh.h:
 
 /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/vector:
 
-jni/../../Source/mesh/panel_mesh.h:
-
-jni/../../Source/mesh/button_mesh.h:
-
-jni/../../Source/system/display.h:
-
-jni/../../Source/game/tetris.h:
-
-jni/../../Source/mesh/cube_mesh.h:
-
-jni/../../Source/game/tetromino.h:
-
-jni/../../Source/game/brick.h:
-
-jni/../../Source/animation/animation.h:
-
-jni/../../Source/texture/texture_manager.h:
-
-jni/../../Source/game/key_map.h:
-
-jni/../../Source/game/table.h:
-
-jni/../../Source/game/message_queue.h:
-
-/home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/queue:
-
-jni/../../Source/game/animated_text.h:
-
-jni/../../Source/texture/font.h:
-
-jni/../../Source/menu/menu_set.h:
-
-jni/../../Source/menu/menu_button.h:
+/home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/memory:

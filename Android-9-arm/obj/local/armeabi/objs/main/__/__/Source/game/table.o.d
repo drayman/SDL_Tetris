@@ -1,7 +1,10 @@
 obj/local/armeabi/objs/main/__/__/Source/game/table.o: \
- jni/../../Source/game/table.cpp jni/../../Source/game/table.h \
- jni/../../Source/texture/texture_manager.h \
- jni/../../Source/system/manager.h \
+ jni/../../Source/game/table.cpp \
+ jni/../../Source/animation/alpha_animation.h \
+ jni/../../Source/animation/animation.h \
+ jni/../../Source/animation/translate_animation.h \
+ jni/../../Source/game/table.h jni/../../Source/texture/texture_manager.h \
+ jni/../../Source/system/resource_manager.h \
  /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/map \
  /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/string \
  /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/memory \
@@ -44,14 +47,19 @@ obj/local/armeabi/objs/main/__/__/Source/game/table.o: \
  jni/../../Source/mesh/cube_mesh.h jni/../../Source/mesh/mesh.h \
  /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/vector \
  jni/../../Source/game/tetromino.h jni/../../Source/game/brick.h \
- jni/../../Source/animation/animation.h \
- jni/../../Source/texture/texture.h jni/../../Source/game/key_map.h
+ jni/../../Source/texture/texture.h
+
+jni/../../Source/animation/alpha_animation.h:
+
+jni/../../Source/animation/animation.h:
+
+jni/../../Source/animation/translate_animation.h:
 
 jni/../../Source/game/table.h:
 
 jni/../../Source/texture/texture_manager.h:
 
-jni/../../Source/system/manager.h:
+jni/../../Source/system/resource_manager.h:
 
 /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/map:
 
@@ -183,8 +191,4 @@ jni/../../Source/game/tetromino.h:
 
 jni/../../Source/game/brick.h:
 
-jni/../../Source/animation/animation.h:
-
 jni/../../Source/texture/texture.h:
-
-jni/../../Source/game/key_map.h:

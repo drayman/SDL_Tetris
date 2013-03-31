@@ -1,7 +1,7 @@
 obj/local/armeabi/objs/main/__/__/Source/game/tetromino.o: \
  jni/../../Source/game/tetromino.cpp \
  jni/../../Source/texture/texture_manager.h \
- jni/../../Source/system/manager.h \
+ jni/../../Source/system/resource_manager.h \
  /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/map \
  /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/string \
  /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/memory \
@@ -42,14 +42,14 @@ obj/local/armeabi/objs/main/__/__/Source/game/tetromino.o: \
  jni/../include/SDL2/SDL_system.h jni/../include/SDL2/SDL_timer.h \
  jni/../include/SDL2/SDL_version.h jni/../../Source/texture/TGA_texture.h \
  jni/../../Source/game/tetromino.h jni/../../Source/game/brick.h \
- jni/../../Source/game/animation.h jni/../../Source/mesh/cube_mesh.h \
+ jni/../../Source/animation/animation.h jni/../../Source/mesh/cube_mesh.h \
  jni/../../Source/mesh/mesh.h \
  /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/vector \
  jni/../../Source/texture/texture.h
 
 jni/../../Source/texture/texture_manager.h:
 
-jni/../../Source/system/manager.h:
+jni/../../Source/system/resource_manager.h:
 
 /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/map:
 
@@ -175,7 +175,7 @@ jni/../../Source/game/tetromino.h:
 
 jni/../../Source/game/brick.h:
 
-jni/../../Source/game/animation.h:
+jni/../../Source/animation/animation.h:
 
 jni/../../Source/mesh/cube_mesh.h:
 

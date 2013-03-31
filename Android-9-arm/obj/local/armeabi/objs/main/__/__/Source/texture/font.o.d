@@ -4,7 +4,7 @@ obj/local/armeabi/objs/main/__/__/Source/texture/font.o: \
  jni/../../Source/texture/font.h \
  /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/memory \
  jni/../../Source/texture/texture_manager.h \
- jni/../../Source/system/manager.h \
+ jni/../../Source/system/resource_manager.h \
  /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/map \
  /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/string \
  jni/../../Source/texture/BMP_texture.h \
@@ -54,7 +54,7 @@ jni/../../Source/texture/font.h:
 
 jni/../../Source/texture/texture_manager.h:
 
-jni/../../Source/system/manager.h:
+jni/../../Source/system/resource_manager.h:
 
 /home/szeke/Android/ndk/sources/cxx-stl/gnu-libstdc++/4.6/include/map:
 
