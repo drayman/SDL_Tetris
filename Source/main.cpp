@@ -372,9 +372,11 @@ void render() {
 
         g_Font.set_upper_font(true);
         g_Font.set_align(Font::FontAlign::LEFT);
+        g_Font.set_plain(Font::FontPlain::XY_2D);
+
         g_Font.set_size(12.0f,15.6f);
         g_Font.draw_text( 22.0f, 227.0f, 0.0f, "Next",
-                    Font::FontPlain::XY_2D, 90 );
+                    0.0f, 0.0f, 90.0f );
         g_Font.set_upper_font(false);
 
         g_Font.set_size(10.0f,13.0f);

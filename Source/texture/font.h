@@ -9,13 +9,21 @@ class Font {
 
 public:
 
-    Font() : align(LEFT), cw(1), ch(1), c_per_row(0), upletters(false) {}
-
     /// Possible target plains
-    enum FontPlain { XY_2D, XY_3D, XZ_3D, YZ_3D };
+    enum class FontPlain { UNDEFINED, XY_2D, XY_3D, XZ_3D, YZ_3D };
 
     /// Font alignments
-    enum FontAlign { LEFT, CENTER, RIGHT };
+    enum class FontAlign { UNDEFINED, LEFT, CENTER, RIGHT };
+
+
+    /// Constructor
+    Font() :
+        align(FontAlign::LEFT),
+        plain(FontPlain::XY_2D),
+        cw(1.0f), ch(1.0f),
+        c_per_row(0),
+        upletters(false)
+    {}
 
     /// Assign a texture what holds the font characters
     void set_texture( const std::shared_ptr<Texture> texture,
@@ -26,39 +34,36 @@ public:
     /// Sets the alignment
     void set_align( FontAlign font_alignment );
 
+    /// Sets the alignment
+    void set_plain( FontPlain font_plain );
+
     /// Sets the dimensions of one character in pixels
     void set_size( GLfloat c_w, GLfloat c_h );
 
     /// Set it to use uppercase or when the bitmap supports only uppercase letters
-    void set_upper_font(GLboolean uppercase) {upletters=uppercase; }
+    void set_upper_font(GLboolean uppercase) { upletters = uppercase; }
 
-    /** Draws the "text" to X,Y,Z.
-        Direction defines the two used axis to draw the text.
-        If XY_2D is used the position value of Z is omitted.
+    /** Draws the "text" to X,Y,Z with c_w and c_h dimensions/char.
         Angle (0-360) defines the rotation on the selected plain.
-        Size and alignment are used from previous set_align() and set_size(). */
-    void draw_text( GLfloat x, GLfloat y, GLfloat z,
-                    const char* text,
-                    FontPlain direction = XY_2D,
-                    GLfloat angle = 0 );
-
-    /** Draws the "text" to X,Y,Z with c_w and c_h dimensions/char,
-        using the value of font_align to set the text alignment.
+        The value of font_align to set the text alignment.
         Direction defines the two used axis to draw the text.
-        If XY_2D is used the position value of Z is omitted.
-        Angle (0-360) defines the rotation on the selected plain. */
-    void draw_text( GLfloat x, GLfloat y, GLfloat z,
-                    const char* text,
-                    GLfloat c_w, GLfloat c_h,
-                    FontAlign font_align,
-                    FontPlain direction = XY_2D,
-                    GLfloat angle = 0 );
+        If XY_2D is used the position value of Z is omitted. */
+    void draw_text(
+        GLfloat x, GLfloat y, GLfloat z,
+        const char* text,
+        GLfloat c_w = 0.0f, GLfloat c_h=0.0f,
+        GLfloat angle = 0.0f,
+        FontAlign font_alignment = FontAlign::UNDEFINED,
+        FontPlain font_direction = FontPlain::UNDEFINED
+    );
 
 private:
 
     std::shared_ptr<Texture> texture;  ///< pointer to our bitmap
 
     FontAlign align;                   ///< alignment
+    FontPlain plain;                   ///< the two axis used to draw
+
     GLfloat  cw,  ch;                  ///< character display size
     GLfloat dtx, dty;                  ///< character texcoord size
 
@@ -69,6 +74,7 @@ private:
     GLuint m_width, m_height;          ///< texture properties
     GLuint c_width, c_height;          ///< character properties
     char first_letter;                 ///< the first letter/sign in the bitmap
+
 };
 
 #endif // FONT_H

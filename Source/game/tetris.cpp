@@ -152,33 +152,58 @@ void Tetris::createRotateAnim()
 
 void Tetris::createScoreMsg(int score)
 {
-    std::stringstream score_str;
-    score_str << score;
+    AnimatedText* newText;
 
-    if (combo<2)
-    {
-        AnimatedText* newText = new AnimatedText(font, score_str.str(), 0.0f ,0.0f,-3.0f, 0.5f, 0.65f, Font::FontPlain::XY_3D);
-        newText->attachAnimation(new TranslateAnimation(30, 0.0f, 0.0f, 10.0f));
-        newText->attachAnimation(new AlphaAnimation(30, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f));
-        messages.add(newText);
-
-    } else {
-
-        std::stringstream combo_str;
-        combo_str << combo << "x TETRIS";
-        AnimatedText* newText;
-
-        newText = new AnimatedText(font, combo_str.str(), 0.0f , 0.5f, -3.0f, 0.5f, 0.65f, Font::FontPlain::XY_3D);
-        newText->attachAnimation(new TranslateAnimation(30, 0.0f, 0.0f, 10.0f));
-        newText->attachAnimation(new AlphaAnimation(30, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f));
-        messages.add(newText);
-
-        newText = new AnimatedText(font, score_str.str(), 0.0f , -0.5f, -3.0f, 0.5f, 0.65f, Font::FontPlain::XY_3D);
-        newText->attachAnimation(new TranslateAnimation(30, 0.0f, 0.0f, 10.0f));
-        newText->attachAnimation(new AlphaAnimation(30, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f));
-        messages.add(newText);
-
+    std::string text;
+    switch (combo) {
+        case 3:  text = "Nice!"; break;
+        case 5:  text = "Cool!"; break;
+        case 8:  text = "Great!"; break;
+        case 10: text = "Fantastic!"; break;
+        case 12: text = "Awesome!"; break;
+        case 15: text = "Amazing!"; break;
+        case 20: text = "Incredible!"; break;
+        case 25: text = "Unbelievable!"; break;
+        case 30: text = "Fearsome..."; break;
+        case 35: text = "Alexey Pajitnov"; break;
+        default: break;
     }
+
+    unsigned int delay = 0;
+    if (text.length() > 0)
+    {
+        newText = new AnimatedText(font, text, 0.0f, 0.0f, -3.0f, delay, 0.5f, 0.65f,
+                                                 Font::FontAlign::CENTER, Font::FontPlain::XY_3D);
+        newText->attachAnimation(new TranslateAnimation(30, 0.0f, 0.0f, 10.0f));
+        newText->attachAnimation(new AlphaAnimation(30, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f));
+        messages.add(newText);
+
+        delay = 30;
+    }
+
+    std::stringstream str_stream;
+    float y_pos = 0.0f;
+    if (combo > 1)
+    {
+        str_stream << combo << "x TETRIS";
+        newText = new AnimatedText(font, str_stream.str(), 0.0f, 0.5f, -3.0f, delay, 0.5f, 0.65f,
+                                                 Font::FontAlign::CENTER, Font::FontPlain::XY_3D);
+        str_stream.str("");
+        str_stream.clear();
+        newText->attachAnimation(new TranslateAnimation(30, 0.0f, 0.0f, 10.0f));
+        newText->attachAnimation(new AlphaAnimation(30, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f));
+        messages.add(newText);
+
+        y_pos = -0.5f;
+    }
+
+    str_stream << score;
+    newText = new AnimatedText(font, str_stream.str(), 0.0f, y_pos,-3.0f, delay, 0.5f, 0.65f,
+                                             Font::FontAlign::CENTER, Font::FontPlain::XY_3D);
+    newText->attachAnimation(new TranslateAnimation(30, 0.0f, 0.0f, 10.0f));
+    newText->attachAnimation(new AlphaAnimation(30, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f));
+    messages.add(newText);
+
 }
 
 
@@ -274,7 +299,7 @@ bool Tetris::update()
                 if ((lines_exploded = table.checkFullLines(curr_y, curr_y+currTetro->shape_size)) > 0)
                 {
                     // increase score, lines, level
-                    int curr_score;
+                    int curr_score = 0;
                     lines+=lines_exploded;
                     switch (lines_exploded) {
                         case 1: curr_score=(level+1)*40;   break;
@@ -333,7 +358,6 @@ void Tetris::draw(bool draw_textures)
     glDisable(GL_DEPTH_TEST);
     glDisable(GL_LIGHTING);
     glLoadIdentity();
-    font.set_align( Font::FontAlign::CENTER );
     messages.draw(1);
     glEnable(GL_LIGHTING);
     glEnable(GL_DEPTH_TEST);

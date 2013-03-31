@@ -18,7 +18,7 @@
 1360286356 /home/szeke/Desktop/DIGITAL/Project/Source/desktop_log.h
 	<stdarg.h>
 
-1364480504 source:/home/szeke/Desktop/DIGITAL/Project/Source/main.cpp
+1364671616 source:/home/szeke/Desktop/DIGITAL/Project/Source/main.cpp
 	"platform.h"
 	"log/log.h"
 	"texture/texture.h"
@@ -1579,7 +1579,7 @@
 1362438977 /home/szeke/Desktop/DIGITAL/Project/Source/texture/TGA_texture.h
 	"texture.h"
 
-1362439527 /home/szeke/Desktop/DIGITAL/Project/Source/texture/font.h
+1364671877 /home/szeke/Desktop/DIGITAL/Project/Source/texture/font.h
 	<memory>
 	"texture_manager.h"
 
@@ -1595,7 +1595,7 @@
 	<stdexcept>
 	"TGA_texture.h"
 
-1364082629 source:/home/szeke/Desktop/DIGITAL/Project/Source/texture/font.cpp
+1364682794 source:/home/szeke/Desktop/DIGITAL/Project/Source/texture/font.cpp
 	"log/log.h"
 	"font.h"
 
@@ -1622,7 +1622,7 @@
 1363218137 /home/szeke/Desktop/DIGITAL/Project/Source/mesh/button_mesh.h
 	"mesh.h"
 
-1364520296 source:/home/szeke/Desktop/DIGITAL/Project/Source/game/tetris.cpp
+1364688969 source:/home/szeke/Desktop/DIGITAL/Project/Source/game/tetris.cpp
 	"animation/translate_animation.h"
 	"animation/rotate_animation.h"
 	"animation/alpha_animation.h"
@@ -1647,7 +1647,7 @@
 
 1363465015 /home/szeke/Desktop/DIGITAL/Project/Source/game/key_map.h
 
-1364566857 /home/szeke/Desktop/DIGITAL/Project/Source/game/tetromino.h
+1364520166 /home/szeke/Desktop/DIGITAL/Project/Source/game/tetromino.h
 	"game/brick.h"
 	"texture/texture_manager.h"
 	"mesh/cube_mesh.h"
@@ -1659,8 +1659,7 @@
 	<memory>
 	"texture/texture.h"
 
-1364559008 source:/home/szeke/Desktop/DIGITAL/Project/Source/game/tetromino.cpp
-	"log/log.h"
+1364583249 source:/home/szeke/Desktop/DIGITAL/Project/Source/game/tetromino.cpp
 	"texture/texture_manager.h"
 	"game/tetromino.h"
 
@@ -1717,20 +1716,20 @@
 	"game/tetromino.h"
 	"game/brick.h"
 
-1364135434 source:/home/szeke/Desktop/DIGITAL/Project/Source/game/animated_text.cpp
+1364672511 source:/home/szeke/Desktop/DIGITAL/Project/Source/game/animated_text.cpp
 	"platform.h"
 	"game/animated_text.h"
 
-1364133296 /home/szeke/Desktop/DIGITAL/Project/Source/game/animated_text.h
+1364671064 /home/szeke/Desktop/DIGITAL/Project/Source/game/animated_text.h
 	"animation/animation.h"
 	"texture/font.h"
 	<string>
 	<vector>
 
-1364093469 source:/home/szeke/Desktop/DIGITAL/Project/Source/game/message_queue.cpp
+1364670994 source:/home/szeke/Desktop/DIGITAL/Project/Source/game/message_queue.cpp
 	"message_queue.h"
 
-1364093406 /home/szeke/Desktop/DIGITAL/Project/Source/game/message_queue.h
+1364671017 /home/szeke/Desktop/DIGITAL/Project/Source/game/message_queue.h
 	<queue>
 	"game/animated_text.h"
 

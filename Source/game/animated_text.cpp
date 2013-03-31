@@ -7,9 +7,11 @@ AnimatedText::AnimatedText(
     float pos_x,
     float pos_y,
     float pos_z,
+    unsigned int start_delay,
     float char_w,
     float char_h,
-    Font::FontPlain direction
+    Font::FontAlign font_alignment,
+    Font::FontPlain font_direction
 ) :
     _font(font)
 {
@@ -17,22 +19,37 @@ AnimatedText::AnimatedText(
     x = pos_x;
     y = pos_y;
     z = pos_z;
+    delay = start_delay;
     c_w = char_w;
     c_h = char_h;
+    align = font_alignment,
+    direction = font_direction;
 }
 
-void AnimatedText::draw(int time_spent)
+
+void AnimatedText::draw(unsigned int time_spent)
 {
-    if (c_w > 0.0f && c_h > 0.0f) _font.set_size(c_w, c_h);
+    if (time_spent <= delay ) {
+        delay-=time_spent;
+    } else {
+        time_spent -= delay;
+        delay = 0;
 
-    glPushMatrix();
+        glPushMatrix();
 
-    for (auto it = animations.begin(); it!=animations.end(); it++)
-        (*it)->transform(time_spent);
+        for (auto it = animations.begin(); it!=animations.end(); it++)
+            (*it)->transform(time_spent);
 
-    _font.draw_text(x, y, z, _text.c_str());
+        _font.draw_text(
+            x, y, z, _text.c_str(),
+            c_w, c_h,
+            0.0f,
+            align,
+            direction
+        );
 
-    glPopMatrix();
+        glPopMatrix();
+    }
 }
 
 

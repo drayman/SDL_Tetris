@@ -8,11 +8,7 @@ MessageQueue::MessageQueue()
 
 MessageQueue::~MessageQueue()
 {
-    while (!messages.empty())
-    {
-        delete messages.front();
-        messages.pop();
-    }
+    clear();
 }
 
 
@@ -35,5 +31,15 @@ void MessageQueue::draw(int time_spent)
             messages.push(msg);
         else
             delete msg;
+    }
+}
+
+
+void MessageQueue::clear()
+{
+    while (!messages.empty())
+    {
+        delete messages.front();
+        messages.pop();
     }
 }

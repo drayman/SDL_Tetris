@@ -18,6 +18,8 @@ public:
 
     void draw(int time_spent);
 
+    void clear();
+
 private:
     std::queue<AnimatedText*> messages;
 

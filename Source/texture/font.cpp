@@ -26,37 +26,64 @@ void Font::set_texture( const std::shared_ptr<Texture> texture,
 
 
 void Font::set_align(FontAlign font_alignment) {
+    if (font_alignment == FontAlign::UNDEFINED) return;
     align = font_alignment;
 }
 
 
-void Font::set_size(GLfloat c_w, GLfloat c_h) {
-    cw = c_w; ch = c_h;
+void Font::set_plain(FontPlain font_plain) {
+    if (font_plain == FontPlain::UNDEFINED) return;
+    plain = font_plain;
 }
 
 
-void Font::draw_text( GLfloat x, GLfloat y, GLfloat z,
-                      const char* text,
-                      FontPlain direction,
-                      GLfloat angle )
+void Font::set_size(GLfloat c_w, GLfloat c_h) {
+    if ( c_w > 0.0f ) cw = c_w;
+    if ( c_h > 0.0f ) ch = c_h;
+}
+
+
+void Font::draw_text(
+    GLfloat x, GLfloat y, GLfloat z,
+    const char* text,
+    GLfloat c_w, GLfloat c_h,
+    GLfloat angle,
+    FontAlign font_alignment,
+    FontPlain font_direction)
 {
     if (c_per_row==0) {
-        LOGW("Warning: uninitalized font is used");
+        LOGW("Uninitialized Font used");
         return;
     }
 
+    if ( !texture->isInitialized() ) {
+        LOGW("Font with broken texture used");
+        return;
+    }
+
+    if (c_w <= 0.0f) c_w = cw;
+    if (c_h <= 0.0f) c_h = ch;
+
+    if (font_direction==FontPlain::UNDEFINED) {
+        font_direction = plain;
+    }
+
+    if (font_alignment==FontAlign::UNDEFINED) {
+        font_alignment = align;
+    }
+
      //character location and dimensions
-    GLfloat cx = 0.0f;
-    GLfloat cy = 0.0f;
+    GLfloat c_x = 0.0f;
+    GLfloat c_y = 0.0f;
 
     // center the text if needed
     GLfloat offset_h = 0, offset_w = 0;
-    if ( align == CENTER ) {
-        offset_h = ch / 2.0f;
-        offset_w = (float)strlen(text) * cw / 2.0f;
+    if ( font_alignment == FontAlign::CENTER ) {
+        offset_h = c_h / 2.0f;
+        offset_w = (float)strlen(text) * c_w / 2.0f;
     }
-    else if ( align == RIGHT ) {
-        offset_w = (float)strlen(text) * cw;
+    else if ( font_alignment == FontAlign::RIGHT ) {
+        offset_w = (float)strlen(text) * c_w;
     }
 
     // bind texture
@@ -67,18 +94,22 @@ void Font::draw_text( GLfloat x, GLfloat y, GLfloat z,
     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable (GL_BLEND);
 
-    // rotate it
     glPushMatrix();
+
+    // move it
     glTranslatef(x, y, z);
-    switch (direction) {
-        case XY_2D:
-        case XY_3D:
+
+    // rotate it
+    if (angle != 0.0f) switch (font_direction) {
+        case FontPlain::UNDEFINED:  // UNDEFINED can not happen, anyway
+        case FontPlain::XY_2D:
+        case FontPlain::XY_3D:
             glRotatef(angle, 0.0f, 0.0f, 1.0f);
             break;
-        case XZ_3D:
+        case FontPlain::XZ_3D:
             glRotatef(angle, 0.0f, 1.0f, 0.0f);
             break;
-        case YZ_3D:
+        case FontPlain::YZ_3D:
             glRotatef(angle, 1.0f, 0.0f, 0.0f);
             break;
     }
@@ -86,10 +117,10 @@ void Font::draw_text( GLfloat x, GLfloat y, GLfloat z,
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
-    for (const char* c = text; *c != 0; c++, cx += cw) {
+    for (const char* c = text; *c != 0; c++, c_x += c_w) {
         // subtract the value of the first char in the character map
         // to get the index in our map
-        int index = ((upletters)?toupper(*c):(*c)) - first_letter; // toupper, cus i was lazy to draw all the letters...
+        int index = ((upletters)?toupper(*c):(*c)) - first_letter;
 
         if ( index < 0 && index+first_letter != ' ' ) {
             LOGW("Character outside of font");
@@ -104,45 +135,48 @@ void Font::draw_text( GLfloat x, GLfloat y, GLfloat z,
         GLfloat tx = float(col * c_width)/float(m_width);
         GLfloat ty = float(row * c_height)/float(m_height);
 
-        GLfloat *Vertices; // Can't be declared inside in a switch. No problem, it's time for lovely compund literals...
+        GLfloat *Vertices; // Can't be declared inside in a switch.
+        // No problem, it's time for lovely compund literals...
+        // We could solve it with vector, or c++0x initializer list as well
 
-        switch (direction) {
-            case XY_2D:
+        switch (font_direction) {
+            case FontPlain::XY_2D:
+            case FontPlain::UNDEFINED:
                 Vertices = (GLfloat[]){
-                    cx-offset_w,    cy-offset_h+ch,
-                    cx-offset_w,    cy-offset_h,
-                    cx-offset_w+cw, cy-offset_h,
-                    cx-offset_w+cw, cy-offset_h+ch
+                    c_x-offset_w,     c_y-offset_h+c_h,
+                    c_x-offset_w,     c_y-offset_h,
+                    c_x-offset_w+c_w, c_y-offset_h,
+                    c_x-offset_w+c_w, c_y-offset_h+c_h
                 };
                 glVertexPointer(2, GL_FLOAT, 0, Vertices);
                 break;
 
-            case XY_3D:
+            case FontPlain::XY_3D:
                 Vertices = (GLfloat[]){
-                    cx-offset_w,    cy-offset_h,    0.0f,
-                    cx-offset_w,    cy-offset_h+ch, 0.0f,
-                    cx-offset_w+cw, cy-offset_h+ch, 0.0f,
-                    cx-offset_w+cw, cy-offset_h,    0.0f
+                    c_x-offset_w,     c_y-offset_h+c_h, 0.0f,
+                    c_x-offset_w,     c_y-offset_h,     0.0f,
+                    c_x-offset_w+c_w, c_y-offset_h,     0.0f,
+                    c_x-offset_w+c_w, c_y-offset_h+c_h, 0.0f
                 };
                 glVertexPointer(3, GL_FLOAT, 0, Vertices);
                 break;
 
-            case XZ_3D:
+            case FontPlain::XZ_3D:
                 Vertices = (GLfloat[]){
-                    cx-offset_w,    0.0f, cy-offset_h,
-                    cx-offset_w,    0.0f, cy-offset_h+ch,
-                    cx-offset_w+cw, 0.0f, cy-offset_h+ch,
-                    cx-offset_w+cw, 0.0f, cy-offset_h
+                    c_x-offset_w,     0.0f,  c_y-offset_h+c_h,
+                    c_x-offset_w,     0.0f,  c_y-offset_h,
+                    c_x-offset_w+c_w, 0.0f,  c_y-offset_h,
+                    c_x-offset_w+c_w, 0.0f,  c_y-offset_h+c_h
                 };
                 glVertexPointer(3, GL_FLOAT, 0, Vertices);
                 break;
 
-            case YZ_3D:
+            case FontPlain::YZ_3D:
                 Vertices = (GLfloat[]){
-                    0.0f, cx-offset_w,    cy-offset_h,
-                    0.0f, cx-offset_w,    cy-offset_h+ch,
-                    0.0f, cx-offset_w+cw, cy-offset_h+ch,
-                    0.0f, cx-offset_w+cw, cy-offset_h
+                    0.0f, c_x-offset_w,     c_y-offset_h+c_h,
+                    0.0f, c_x-offset_w,     c_y-offset_h,
+                    0.0f, c_x-offset_w+c_w, c_y-offset_h,
+                    0.0f, c_x-offset_w+c_w, c_y-offset_h+c_h
                 };
                 glVertexPointer(3, GL_FLOAT, 0, Vertices);
                 break;
@@ -167,25 +201,4 @@ void Font::draw_text( GLfloat x, GLfloat y, GLfloat z,
     glPopMatrix();
     glDisable( GL_BLEND );
     glDisable( GL_TEXTURE_2D );
-}
-
-
-void Font::draw_text( GLfloat x, GLfloat y, GLfloat z,
-                const char* text,
-                GLfloat c_w, GLfloat c_h,
-                FontAlign font_align,
-                FontPlain direction,
-                GLfloat angle ) {
-
-    FontAlign ex_align=align;           // save previous settings
-    GLfloat ex_cw = cw, ex_ch= ch;
-
-    align = font_align;                 // use the parameter settings
-    cw = c_w; ch = c_h;
-
-    draw_text( x, y, z, text, direction, angle );  // draw
-
-    align = ex_align;                   // restore previous settings
-    cw = ex_cw; ch = ex_ch;
-
 }

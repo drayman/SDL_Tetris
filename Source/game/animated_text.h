@@ -18,14 +18,16 @@ public:
         float pos_x,
         float pos_y,
         float pos_z = 0.0f,
+        unsigned int start_delay = 0.0f,
         float char_w = 0.0f,
         float char_h = 0.0f,
-        Font::FontPlain direction = Font::FontPlain::XY_2D
+        Font::FontAlign font_alignment = Font::FontAlign::UNDEFINED,
+        Font::FontPlain font_direction = Font::FontPlain::UNDEFINED
     );
 
     ~AnimatedText();
 
-    void draw(int timeSpent);
+    void draw(unsigned int timeSpent);
 
     void attachAnimation(Animation* animation);
 
@@ -38,9 +40,12 @@ private:
 
     std::vector<Animation*> animations;
 
-    Font::FontPlain direction;
     float x, y, z;
+    unsigned int delay;
+
     float c_w, c_h;
+    Font::FontAlign align;
+    Font::FontPlain direction;
 
 };
 
