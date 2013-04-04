@@ -76,6 +76,8 @@ static void printGLString(const char *name, GLenum s) {
 
 void init_control_buttons()
 {
+    menu.setSize(displayLayout.controlWidth, displayLayout.controlHeight);
+
     if ( displayLayout.isLandscape() )
         if ( displayLayout.controlWidth > displayLayout.controlHeight*0.667f )
             controlButton.scale((float)displayLayout.controlHeight/displayLayout.controlWidth*0.667f, 1.0f);
@@ -91,8 +93,11 @@ void init_control_buttons()
 
 void toggle_fullscreen()
 {
-
     SDL_SetWindowFullscreen(window, gConf.fullscreen);
+
+    menu.addButton( MenuType::OPTS,
+    texmanager.get((gConf.fullscreen)?"menu/window.bmp":"menu/fullscreen.bmp"),
+    ButtonValue::OPTIONS, 0, 0, 0, 1);
 
 /*
     if (gConf.fullscreen)
@@ -100,6 +105,7 @@ void toggle_fullscreen()
     else
         displayLayout.windowMode();
 */
+
     displayLayout.toggleMode();
 
     SDL_SetWindowSize(window, displayLayout.width, displayLayout.height);
@@ -132,12 +138,20 @@ void menu_select(unsigned char menu_x, unsigned char menu_y)
             if (menu_x == 2 && menu_y==1) gConf.menu_mode=3;
         }
     } else if (gConf.menu_mode==2) {            // Settings
-        if (menu_x == 0 && menu_y==0) gConf.textures = !gConf.textures;
+        if (menu_x == 0 && menu_y==0) {
+            menu.enableButton( MenuType::MISC, 0, 1, gConf.textures);
+            gConf.textures = !gConf.textures;
+        }
         else
-        if (menu_x == 1 && menu_y==0) gConf.mystery = !gConf.mystery;
+        if (menu_x == 1 && menu_y==0) {
+            menu.enableButton( MenuType::MISC, 1, 1, gConf.mystery);
+            gConf.mystery = !gConf.mystery;
+        }
         else
         if (menu_x == 0 && menu_y==1) {
             gConf.fullscreen = !gConf.fullscreen;
+
+
             toggle_fullscreen();
         } else {
             if (displayLayout.isLandscape()) {
@@ -218,104 +232,34 @@ void draw_menu()
 
 
     if (gConf.menu_mode == 0) {
-/*
-        if (displayLayout.isLandscape()) glTranslatef( 1.5f,  2.5f,  0.0f);
-                                    else glTranslatef( 0.5f,  0.5f,  0.0f);
-        texmanager.bind("menu/start.bmp");
-        controlButton.draw();
 
-        if (displayLayout.isLandscape()) glTranslatef( 0.0f,  -1.0f,  0.0f);
-                                    else glTranslatef( 1.0f,  0.0f,  0.0f);
-        texmanager.bind("menu/settings.bmp");
-        controlButton.draw();
-
-        if (displayLayout.isLandscape()) glTranslatef( 0.0f,  -1.0f,  0.0f);
-                                    else glTranslatef( 1.0f,  0.0f,  0.0f);
-        texmanager.bind("menu/exit.bmp");
-        controlButton.draw();
-*/
+        menu.setActive(MenuType::MAIN);
         menu.draw();
 
     } else if (gConf.menu_mode == 1) {
 
-        if (displayLayout.isLandscape()) glTranslatef(0.5f, 1.5f, 0.0f);
-                                    else glTranslatef( 0.5f,  0.5f,  0.0f);
-        texmanager.bind("menu/rotate.bmp");
-        controlButton.draw();
+        menu.setActive(MenuType::GAME);
+        menu.draw();
 
-        glTranslatef(0.0f, 1.0f, 0.0f);
-        texmanager.bind("menu/arrow_left.bmp");
-        controlButton.draw();
-
-        glTranslatef(1.0f, 0.0f,  0.0f);
-        texmanager.bind("menu/arrow_right.bmp");
-        controlButton.draw();
-
-        glTranslatef( 0.0f, -1.0f,  0.0f);
-        texmanager.bind("menu/arrow_down.bmp");
-        controlButton.draw();
-
-        if (displayLayout.isLandscape()) glTranslatef( 0.0f, -1.0f,  0.0f);
-                                    else glTranslatef( 1.0f,  0.0f,  0.0f);
-        texmanager.bind("menu/return.bmp");
-        controlButton.draw();
 
     } else  if (gConf.menu_mode == 2) {
 
-        if (displayLayout.isLandscape()) glTranslatef( 0.5f, 1.5f, 0.0f);
-                                    else glTranslatef( 0.5f, 0.5f, 0.0f);
-        if (!gConf.fullscreen) texmanager.bind("menu/fullscreen.bmp");
-                          else texmanager.bind("menu/window.bmp");
-        controlButton.draw();
+        menu.setActive(MenuType::OPTS);
+        menu.draw();
 
-        glTranslatef(0.0f, 1.0f, 0.0f);
-        texmanager.bind("menu/texture.bmp");
-        controlButton.draw();
-        if (!gConf.textures) {
-            texmanager.bind("menu/no.bmp");
-            controlButton.draw();
-        }
-
-        glTranslatef(1.0f, 0.0f,  0.0f);
-        texmanager.bind("menu/mystery.bmp");
-        controlButton.draw();
-        if (!gConf.mystery) {
-            texmanager.bind("menu/no.bmp");
-            controlButton.draw();
-        }
-
-        if (displayLayout.isLandscape()) glTranslatef( 0.0f, -2.0f,  0.0f);
-                                    else glTranslatef( 1.0f, -1.0f,  0.0f);
-        texmanager.bind("menu/return.bmp");
-        controlButton.draw();
+        menu.setActive(MenuType::MISC);
+        menu.draw();
 
     } else if (gConf.menu_mode == 3) {
 
-        if (displayLayout.isLandscape()) glTranslatef( 0.5f, 2.5f, 0.0f);
-                                    else glTranslatef( 0.5f, 1.5f, 0.0f);
-        texmanager.bind("menu/save.bmp");
-        controlButton.draw();
-
-        if (displayLayout.isLandscape()) glTranslatef( 1.0f, 0.0f, 0.0f);
-                                    else glTranslatef( 0.0f, -1.0f, 0.0f);
-        texmanager.bind("menu/yes.bmp");
-        controlButton.draw();
-
-        if (displayLayout.isLandscape()) glTranslatef( 0.0f, -1.0f, 0.0f);
-                                    else glTranslatef( 1.0f, 0.0f, 0.0f);
-        texmanager.bind("menu/no.bmp");
-        controlButton.draw();
-
-        if (displayLayout.isLandscape()) glTranslatef( 0.0f, -1.0f,  0.0f);
-                                    else glTranslatef( 1.0f, 0.0f,  0.0f);
-        texmanager.bind("menu/return.bmp");
-        controlButton.draw();
+        menu.setActive(MenuType::SAVE);
+        menu.draw();
 
     } else if (gConf.menu_mode == 4) {
-        if (displayLayout.isLandscape()) glTranslatef( 1.5f, 0.5f,  0.0f);
-                                    else glTranslatef( 2.5f, 0.5f,  0.0f);
-        texmanager.bind("menu/return.bmp");
-        controlButton.draw();
+
+        menu.setActive(MenuType::OVER);
+        menu.draw();
+
     }
 
     glEnable(GL_DEPTH_TEST);
@@ -551,6 +495,89 @@ void createWindow()
 
 void build_menu()
 {
+
+    menu.addButton( MenuType::MAIN,
+        texmanager.get("menu/start.bmp"),
+        ButtonValue::NEWGAME, 0, 0, 1, 2);
+
+    menu.addButton( MenuType::MAIN,
+        texmanager.get("menu/settings.bmp"),
+        ButtonValue::OPTIONS, 1, 0, 1, 1);
+
+    menu.addButton( MenuType::MAIN,
+        texmanager.get("menu/exit.bmp"),
+        ButtonValue::EXIT, 2, 0, 1, 0);
+
+
+    menu.addButton( MenuType::GAME,
+        texmanager.get("menu/rotate.bmp"),
+        ButtonValue::GAME_ROTATE, 0, 0, 0, 1);
+
+    menu.addButton( MenuType::GAME,
+        texmanager.get("menu/arrow_down.bmp"),
+        ButtonValue::GAME_DOWN, 1, 0, 1, 1);
+
+    menu.addButton( MenuType::GAME,
+        texmanager.get("menu/arrow_left.bmp"),
+        ButtonValue::GAME_LEFT, 0, 1, 0, 2);
+
+    menu.addButton( MenuType::GAME,
+        texmanager.get("menu/arrow_right.bmp"),
+        ButtonValue::GAME_RIGHT, 1, 1, 1, 2);
+
+    menu.addButton( MenuType::GAME,
+        texmanager.get("menu/return.bmp"),
+        ButtonValue::BACK, 2, 0, 1, 0);
+
+
+
+    menu.addButton( MenuType::OPTS,
+        texmanager.get("menu/fullscreen.bmp"),
+        ButtonValue::OPTS_FULLSCREEN, 0, 0, 0, 1);
+
+    menu.addButton( MenuType::OPTS,
+        texmanager.get("menu/texture.bmp"),
+        ButtonValue::OPTS_TEXTURES, 0, 1, 0, 2);
+
+    menu.addButton( MenuType::OPTS,
+        texmanager.get("menu/mystery.bmp"),
+        ButtonValue::OPTS_MYSTERY, 1, 1, 1, 2);
+
+    menu.addButton( MenuType::OPTS,
+        texmanager.get("menu/return.bmp"),
+        ButtonValue::BACK, 2, 0, 1, 0);
+
+    menu.addButton( MenuType::MISC,
+        texmanager.get("menu/no.bmp"),
+        ButtonValue::NONE, 0, 1, 0, 2, false);
+
+    menu.addButton( MenuType::MISC,
+        texmanager.get("menu/no.bmp"),
+        ButtonValue::NONE, 1, 1, 1, 2);
+
+
+    menu.addButton( MenuType::SAVE,
+        texmanager.get("menu/save.bmp"),
+        ButtonValue::NONE, 0, 1, 0, 2);
+
+    menu.addButton( MenuType::SAVE,
+        texmanager.get("menu/yes.bmp"),
+        ButtonValue::NONE, 0, 0, 1, 2);
+
+    menu.addButton( MenuType::SAVE,
+        texmanager.get("menu/no.bmp"),
+        ButtonValue::NONE, 1, 0, 1, 1);
+
+    menu.addButton( MenuType::SAVE,
+        texmanager.get("menu/return.bmp"),
+        ButtonValue::BACK, 2, 0, 1, 0);
+
+
+    menu.addButton( MenuType::OVER,
+        texmanager.get("menu/return.bmp"),
+        ButtonValue::BACK, 2, 0, 1, 0);
+
+
 /*
     texmanager.add("menu/start.bmp");
     texmanager.add("menu/settings.bmp");
@@ -568,20 +595,6 @@ void build_menu()
     texmanager.add("menu/no.bmp");
     texmanager.add("menu/save.bmp");
 */
-
-    menu.setSize(displayLayout.controlWidth, displayLayout.controlHeight);
-
-    menu.addButton( MenuType::MAIN,
-        texmanager.get("menu/start.bmp"),
-        ButtonValue::NEWGAME, 0, 0, 1, 2);
-
-    menu.addButton( MenuType::MAIN,
-        texmanager.get("menu/settings.bmp"),
-        ButtonValue::OPTIONS, 1, 0, 1, 1);
-
-    menu.addButton( MenuType::MAIN,
-        texmanager.get("menu/exit.bmp"),
-        ButtonValue::EXIT, 2, 0, 1, 0);
 }
 
 

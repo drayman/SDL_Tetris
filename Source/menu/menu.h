@@ -9,6 +9,8 @@
 #include <vector>
 #include <map>
 
+#include "log/log.h"
+
 class Menu
 {
 public:
@@ -82,6 +84,8 @@ private:
             value(return_value),
             enabled(enable_draw)
         {}
+
+~MenuButton(){LOGW("Button killed");}
 
         /// Pointer to the button's texture
         std::shared_ptr<Texture> texture;
