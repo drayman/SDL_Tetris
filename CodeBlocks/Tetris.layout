@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
-	<ActiveTarget name="Debug-Linux64" />
+	<ActiveTarget name="Release-Linux64" />
 	<File name="../Source/animation/alpha_animation.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="46" topLine="0" />
 	</File>
@@ -26,36 +26,36 @@
 		<Cursor position="326" topLine="0" />
 	</File>
 	<File name="../Source/game/animated_text.cpp" open="0" top="0" tabpos="5">
-		<Cursor position="622" topLine="8" />
+		<Cursor position="54" topLine="0" />
 	</File>
 	<File name="../Source/game/animated_text.h" open="0" top="0" tabpos="4">
-		<Cursor position="165" topLine="0" />
+		<Cursor position="600" topLine="11" />
 	</File>
 	<File name="../Source/game/brick.h" open="0" top="0" tabpos="0">
 		<Cursor position="1114" topLine="10" />
 	</File>
 	<File name="../Source/game/message_queue.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="477" topLine="0" />
+		<Cursor position="534" topLine="3" />
 	</File>
 	<File name="../Source/game/message_queue.h" open="0" top="0" tabpos="3">
-		<Cursor position="210" topLine="0" />
+		<Cursor position="260" topLine="0" />
 	</File>
 	<File name="../Source/game/table.cpp" open="0" top="0" tabpos="5">
-		<Cursor position="3496" topLine="12" />
+		<Cursor position="3496" topLine="192" />
 	</File>
 	<File name="../Source/game/table.h" open="0" top="0" tabpos="3">
 		<Cursor position="636" topLine="1" />
 	</File>
 	<File name="../Source/game/tetris.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="1787" topLine="87" />
+		<Cursor position="4953" topLine="161" />
 	</File>
 	<File name="../Source/game/tetris.h" open="1" top="0" tabpos="3">
 		<Cursor position="663" topLine="0" />
 	</File>
-	<File name="../Source/game/tetromino.cpp" open="1" top="1" tabpos="6">
-		<Cursor position="956" topLine="0" />
+	<File name="../Source/game/tetromino.cpp" open="0" top="0" tabpos="6">
+		<Cursor position="1372" topLine="185" />
 	</File>
-	<File name="../Source/game/tetromino.h" open="1" top="0" tabpos="7">
+	<File name="../Source/game/tetromino.h" open="0" top="0" tabpos="7">
 		<Cursor position="622" topLine="5" />
 	</File>
 	<File name="../Source/gfx/skybox.cpp" open="0" top="0" tabpos="5">
@@ -65,7 +65,19 @@
 		<Cursor position="278" topLine="0" />
 	</File>
 	<File name="../Source/main.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="614" topLine="12" />
+		<Cursor position="452" topLine="7" />
+	</File>
+	<File name="../Source/menu/menu.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="587" topLine="0" />
+	</File>
+	<File name="../Source/menu/menu.h" open="1" top="1" tabpos="4">
+		<Cursor position="1375" topLine="22" />
+	</File>
+	<File name="../Source/menu/menu_values.h" open="0" top="0" tabpos="0">
+		<Cursor position="112" topLine="0" />
+	</File>
+	<File name="../Source/mesh/button_mesh.h" open="0" top="0" tabpos="0">
+		<Cursor position="429" topLine="0" />
 	</File>
 	<File name="../Source/mesh/mesh.h" open="0" top="0" tabpos="0">
 		<Cursor position="0" topLine="7" />
@@ -74,19 +86,19 @@
 		<Cursor position="1044" topLine="30" />
 	</File>
 	<File name="../Source/system/display.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="0" topLine="63" />
+		<Cursor position="1916" topLine="81" />
 	</File>
-	<File name="../Source/system/manager.h" open="0" top="0" tabpos="0">
-		<Cursor position="142" topLine="0" />
+	<File name="../Source/system/resource_manager.h" open="0" top="0" tabpos="0">
+		<Cursor position="1262" topLine="0" />
 	</File>
 	<File name="../Source/texture/font.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="20" topLine="0" />
+		<Cursor position="4697" topLine="135" />
 	</File>
 	<File name="../Source/texture/font.h" open="0" top="0" tabpos="0">
-		<Cursor position="1230" topLine="23" />
+		<Cursor position="1944" topLine="39" />
 	</File>
 	<File name="../Source/texture/texture.h" open="0" top="0" tabpos="6">
-		<Cursor position="0" topLine="0" />
+		<Cursor position="0" topLine="3" />
 	</File>
 	<File name="../Source/texture/texture_manager.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="82" topLine="0" />

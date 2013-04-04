@@ -291,6 +291,7 @@ bool Tetris::update()
             else
             {
                 curr_y++;
+
                 table.placeTetro(currTetro.get(), curr_x, curr_y);
 
                 // If there's fulll line  jump to the next stage. It would be nice to watch the explosion

@@ -62,13 +62,13 @@ void DisplayLayout::setSize()
         mainWidth=mainHeight=height;
         controlWidth=width-height;
         controlHeight=height;
-    }
-    else {
+    } else {
         landscape = false;
         mainHeight=mainWidth=width;
         controlHeight=height-width;
         controlWidth=width;
     }
+
     Projection::createPerspective(PPFullMatrix, 90.0f, (float)width/height, 0.1f, 2.0f);
     Projection::createPerspective(PPGameMatrix, 90.0f, 0.667f, 0.1f, 50.0f);
     Projection::createPerspective(PPSquareMatrix, 90.0f, 1.0, 0.1f, 50.0f);

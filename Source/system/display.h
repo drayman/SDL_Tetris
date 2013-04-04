@@ -63,10 +63,10 @@ private:
     void setSize();
 
     /// Orientation
-    GLboolean landscape;
+    bool landscape;
 
     /// Fullscren
-    GLboolean fullscreen;
+    bool fullscreen;
 
     /// Saved projection matrices
     GLfloat PPFullMatrix[16];       ///< For fullscreen, skybox in landscape

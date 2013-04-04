@@ -34,8 +34,8 @@ DisplayLayout displayLayout;
 Tetris tetris(texmanager, g_Font);
 
 
-#include "menu/menu_set.h"
-
+#include "menu/menu.h"
+Menu menu(3, 2);
 
 struct GameConfig {
 
@@ -218,7 +218,7 @@ void draw_menu()
 
 
     if (gConf.menu_mode == 0) {
-
+/*
         if (displayLayout.isLandscape()) glTranslatef( 1.5f,  2.5f,  0.0f);
                                     else glTranslatef( 0.5f,  0.5f,  0.0f);
         texmanager.bind("menu/start.bmp");
@@ -233,6 +233,8 @@ void draw_menu()
                                     else glTranslatef( 1.0f,  0.0f,  0.0f);
         texmanager.bind("menu/exit.bmp");
         controlButton.draw();
+*/
+        menu.draw();
 
     } else if (gConf.menu_mode == 1) {
 
@@ -547,6 +549,42 @@ void createWindow()
 
 }
 
+void build_menu()
+{
+/*
+    texmanager.add("menu/start.bmp");
+    texmanager.add("menu/settings.bmp");
+    texmanager.add("menu/exit.bmp");
+    texmanager.add("menu/arrow_down.bmp");
+    texmanager.add("menu/arrow_left.bmp");
+    texmanager.add("menu/arrow_right.bmp");
+    texmanager.add("menu/rotate.bmp");
+    texmanager.add("menu/return.bmp");
+    texmanager.add("menu/fullscreen.bmp");
+    texmanager.add("menu/window.bmp");
+    texmanager.add("menu/texture.bmp");
+    texmanager.add("menu/mystery.bmp");
+    texmanager.add("menu/yes.bmp");
+    texmanager.add("menu/no.bmp");
+    texmanager.add("menu/save.bmp");
+*/
+
+    menu.setSize(displayLayout.controlWidth, displayLayout.controlHeight);
+
+    menu.addButton( MenuType::MAIN,
+        texmanager.get("menu/start.bmp"),
+        ButtonValue::NEWGAME, 0, 0, 1, 2);
+
+    menu.addButton( MenuType::MAIN,
+        texmanager.get("menu/settings.bmp"),
+        ButtonValue::OPTIONS, 1, 0, 1, 1);
+
+    menu.addButton( MenuType::MAIN,
+        texmanager.get("menu/exit.bmp"),
+        ButtonValue::EXIT, 2, 0, 1, 0);
+}
+
+
 void load_textures_draw(int ratio)
 {
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
@@ -605,6 +643,8 @@ void load_textures()
     texmanager.add("menu/yes.bmp");
     texmanager.add("menu/no.bmp");
     texmanager.add("menu/save.bmp");
+
+    build_menu();
 
     load_textures_draw(30);
     texmanager.add("skybox/south.bmp");

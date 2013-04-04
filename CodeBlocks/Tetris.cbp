@@ -191,6 +191,9 @@
 		<Unit filename="../Source/log/desktop_log.h" />
 		<Unit filename="../Source/log/log.h" />
 		<Unit filename="../Source/main.cpp" />
+		<Unit filename="../Source/menu/menu.cpp" />
+		<Unit filename="../Source/menu/menu.h" />
+		<Unit filename="../Source/menu/menu_values.h" />
 		<Unit filename="../Source/mesh/button_mesh.h" />
 		<Unit filename="../Source/mesh/cube_mesh.h" />
 		<Unit filename="../Source/mesh/mesh.cpp" />
@@ -200,9 +203,9 @@
 		<Unit filename="../Source/platform.h" />
 		<Unit filename="../Source/system/display.cpp" />
 		<Unit filename="../Source/system/display.h" />
-		<Unit filename="../Source/system/manager.h" />
 		<Unit filename="../Source/system/projection.cpp" />
 		<Unit filename="../Source/system/projection.h" />
+		<Unit filename="../Source/system/resource_manager.h" />
 		<Unit filename="../Source/texture/BMP_texture.cpp" />
 		<Unit filename="../Source/texture/BMP_texture.h" />
 		<Unit filename="../Source/texture/TGA_texture.cpp" />
