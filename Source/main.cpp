@@ -37,11 +37,7 @@ Menu menu(3, 2);
 struct GameConfig {
 
     GameConfig() :
-#       ifdef DESKTOP_DETECTED
-        fullscreen(false),
-#       else
         fullscreen(true),
-#       endif
         textures(true),
         mystery(false),
         done(false)
@@ -81,7 +77,7 @@ void toggle_fullscreen()
 
     menu.addButton( MenuType::OPTS,
     texmanager.get((gConf.fullscreen)?"menu/window.bmp":"menu/fullscreen.bmp"),
-    ButtonValue::OPTIONS, 0, 0, 0, 1);
+    ButtonValue::OPTS_FULLSCREEN, 0, 0, 0, 1);
 
 /*
     if (gConf.fullscreen)
@@ -150,6 +146,7 @@ void menu_update(ButtonValue menu_code)
         case ButtonValue::OPTS_FULLSCREEN:
             gConf.fullscreen = !gConf.fullscreen;
             toggle_fullscreen();
+            break;
         case ButtonValue::BACK:
             menu.setActive(MenuType::MAIN);
             break;
@@ -417,9 +414,11 @@ void createWindow()
 #	ifdef DESKTOP_DETECTED
     displayLayout.setWindowSize(480,800);
     displayLayout.windowMode();
+    gConf.fullscreen = false;
 #   else
     displayLayout.setWindowSize(current.w, current.h);
     displayLayout.fullscreenMode();
+    gConf.fullscreen = true;
 #   endif
 
 

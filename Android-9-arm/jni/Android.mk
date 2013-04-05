@@ -14,7 +14,7 @@ LOCAL_MODULE := main
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Source \
                     $(LOCAL_PATH)/../include
 
-LOCAL_CPPFLAGS   := -std=c++0x -fexceptions -DDEBUG_MODE
+LOCAL_CPPFLAGS   := -std=c++0x -fexceptions #-DDEBUG_MODE
 
 LOCAL_SRC_FILES := SDL_android_main.cpp                            \
                    ../../Source/texture/texture.cpp                \
@@ -28,6 +28,7 @@ LOCAL_SRC_FILES := SDL_android_main.cpp                            \
 				   ../../Source/animation/alpha_animation.cpp      \
 			       ../../Source/animation/rotate_animation.cpp     \
 				   ../../Source/animation/translate_animation.cpp  \
+		           ../../Source/menu/menu.cpp                      \
 		           ../../Source/game/key_map.cpp                   \
 		           ../../Source/game/table.cpp                     \
 				   ../../Source/game/tetromino.cpp                 \
