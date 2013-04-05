@@ -24,9 +24,6 @@ Skybox skybox;
 #include "mesh/panel_mesh.h"
 PanelMesh panel;
 
-#include "mesh/button_mesh.h"
-ButtonMesh controlButton;
-
 #include "system/display.h"
 DisplayLayout displayLayout;
 
@@ -40,7 +37,6 @@ Menu menu(3, 2);
 struct GameConfig {
 
     GameConfig() :
-        menu_mode(0),
 #       ifdef DESKTOP_DETECTED
         fullscreen(false),
 #       else
@@ -51,7 +47,6 @@ struct GameConfig {
         done(false)
         {}
 
-    unsigned char menu_mode;
     bool fullscreen;
     bool textures;
     bool mystery;
@@ -77,17 +72,6 @@ static void printGLString(const char *name, GLenum s) {
 void init_control_buttons()
 {
     menu.setSize(displayLayout.controlWidth, displayLayout.controlHeight);
-
-    if ( displayLayout.isLandscape() )
-        if ( displayLayout.controlWidth > displayLayout.controlHeight*0.667f )
-            controlButton.scale((float)displayLayout.controlHeight/displayLayout.controlWidth*0.667f, 1.0f);
-        else
-            controlButton.scale(1.0f, (float)displayLayout.controlWidth/displayLayout.controlHeight*1.5f);
-    else
-        if ( displayLayout.controlWidth > displayLayout.controlHeight*1.5f )
-            controlButton.scale((float)displayLayout.controlHeight/displayLayout.controlWidth*1.5f, 1.0f);
-        else
-            controlButton.scale(1.0f, (float)displayLayout.controlWidth/displayLayout.controlHeight*0.667f);
 }
 
 
@@ -114,108 +98,93 @@ void toggle_fullscreen()
 }
 
 
-void menu_select(unsigned char menu_x, unsigned char menu_y)
+ButtonValue menu_click(Uint16 mouse_x, Uint16 mouse_y)
 {
-    if (gConf.menu_mode==0) {
-
-        if (displayLayout.isLandscape()) {      // Main menu
-            if (menu_x == 1 && menu_y==0) gConf.menu_mode = 1;
-            else
-            if (menu_x == 1 && menu_y==1) gConf.menu_mode = 2;
-            else
-            if (menu_x == 1 && menu_y==2) gConf.done = true;
-        } else {
-            if (menu_x == 0 && menu_y==1) gConf.menu_mode = 1;
-            else
-            if (menu_x == 1 && menu_y==1) gConf.menu_mode = 2;
-            else
-            if (menu_x == 2 && menu_y==1) gConf.done = true;
-        }
-    } else if (gConf.menu_mode==1) {            // Game
-        if (displayLayout.isLandscape()) {
-            if (menu_x == 1 && menu_y==2) gConf.menu_mode=3;
-        } else {
-            if (menu_x == 2 && menu_y==1) gConf.menu_mode=3;
-        }
-    } else if (gConf.menu_mode==2) {            // Settings
-        if (menu_x == 0 && menu_y==0) {
-            menu.enableButton( MenuType::MISC, 0, 1, gConf.textures);
-            gConf.textures = !gConf.textures;
-        }
-        else
-        if (menu_x == 1 && menu_y==0) {
-            menu.enableButton( MenuType::MISC, 1, 1, gConf.mystery);
-            gConf.mystery = !gConf.mystery;
-        }
-        else
-        if (menu_x == 0 && menu_y==1) {
-            gConf.fullscreen = !gConf.fullscreen;
-
-
-            toggle_fullscreen();
-        } else {
-            if (displayLayout.isLandscape()) {
-                if (menu_x == 1 && menu_y==2) gConf.menu_mode=0;
-            } else {
-                if (menu_x == 2 && menu_y==1) gConf.menu_mode=0;
-            }
-        }
-    } else if (gConf.menu_mode==3) {            // Save or leave
-        if (displayLayout.isLandscape()) {
-            if (menu_x==1) {
-                if (menu_y==0) gConf.menu_mode=0;
-                else
-                if (menu_y==1) {
-                    tetris.reset();
-                    gConf.menu_mode=0; }
-                else
-                if (menu_y==2) gConf.menu_mode=1;
-            }
-        } else {
-            if (menu_y==1) {
-                if (menu_x==0) gConf.menu_mode=0;
-                else
-                if (menu_x==1) {
-                    tetris.reset();
-                    gConf.menu_mode=0; }
-                else
-                if (menu_x==2) gConf.menu_mode=1;
-            }
-        }
-    } else if (gConf.menu_mode==4) {            // GAME OVER
-        if (displayLayout.isLandscape()) {
-            if (menu_x == 1 && menu_y==2) {
-                gConf.menu_mode=0;
-                tetris.reset();
-            }
-        } else {
-            if (menu_x == 2 && menu_y==1)
-            {
-                gConf.menu_mode=0;
-                tetris.reset();
-            }
-        }
+    if (displayLayout.isLandscape()) {
+        if (mouse_x<displayLayout.mainWidth) return ButtonValue::NONE;
+        mouse_x-=displayLayout.mainWidth;
+    } else {
+        if (mouse_y<displayLayout.mainHeight) return ButtonValue::NONE;
+        mouse_y-=displayLayout.mainWidth;
     }
+
+    return menu.getButtonValue(mouse_x, mouse_y);
 }
 
-
-void menu_click(Uint16 mouse_x, Uint16 mouse_y)
+void menu_update(ButtonValue menu_code)
 {
-    unsigned char menu_x, menu_y;
+    switch (menu.getActive())
+    {
+    case MenuType::MAIN:
+        switch (menu_code)
+        {
+        case ButtonValue::NEWGAME:
+            menu.setActive(MenuType::GAME);
+            break;
+        case ButtonValue::OPTIONS:
+            menu.setActive(MenuType::OPTS);
+            break;
+        case ButtonValue::EXIT:
+            gConf.done = true;
+            break;
+        default:
+            break;
+        }
+        break;
 
-    if (displayLayout.isLandscape()) {
-        if (mouse_x<displayLayout.mainWidth) return;
-        mouse_x-=displayLayout.mainWidth;
-        menu_x = mouse_x*2/displayLayout.controlWidth;
-        menu_y = mouse_y*3/displayLayout.controlHeight;
-    } else {
-        if (mouse_y<displayLayout.mainHeight) return;
-        mouse_y-=displayLayout.mainWidth;
-        menu_x = mouse_x*3/displayLayout.controlWidth;
-        menu_y = mouse_y*2/displayLayout.controlHeight;
+    case MenuType::GAME:
+        if (menu_code == ButtonValue::BACK) menu.setActive(MenuType::SAVE);
+        break;
+
+    case MenuType::OPTS:
+        switch (menu_code)
+        {
+        case ButtonValue::OPTS_TEXTURES:
+            menu.enableButton( MenuType::MISC, 0, 1, gConf.textures);
+            gConf.textures = !gConf.textures;
+            break;
+        case ButtonValue::OPTS_MYSTERY:
+            menu.enableButton( MenuType::MISC, 1, 1, gConf.mystery);
+            gConf.mystery = !gConf.mystery;
+            break;
+        case ButtonValue::OPTS_FULLSCREEN:
+            gConf.fullscreen = !gConf.fullscreen;
+            toggle_fullscreen();
+        case ButtonValue::BACK:
+            menu.setActive(MenuType::MAIN);
+            break;
+        default:
+            break;
+        }
+        break;
+
+    case MenuType::SAVE:
+        switch (menu_code)
+        {
+        case ButtonValue::SAVE_YES:
+            menu.setActive(MenuType::MAIN);
+            break;
+        case ButtonValue::SAVE_NO:
+            tetris.reset();
+            menu.setActive(MenuType::MAIN);
+            break;
+        case ButtonValue::BACK:
+            menu.setActive(MenuType::GAME);
+            break;
+        default:
+            break;
+        }
+        break;
+    case MenuType::OVER:
+        if (menu_code == ButtonValue::BACK) {
+            menu.setActive(MenuType::MAIN);
+            tetris.reset();
+        }
+        break;
+    default:
+        break;
     }
 
-    menu_select(menu_x, menu_y);
 }
 
 
@@ -230,36 +199,12 @@ void draw_menu()
     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable (GL_BLEND);
 
+    menu.draw();
 
-    if (gConf.menu_mode == 0) {
-
-        menu.setActive(MenuType::MAIN);
-        menu.draw();
-
-    } else if (gConf.menu_mode == 1) {
-
-        menu.setActive(MenuType::GAME);
-        menu.draw();
-
-
-    } else  if (gConf.menu_mode == 2) {
-
-        menu.setActive(MenuType::OPTS);
-        menu.draw();
-
+    if (menu.getActive()==MenuType::OPTS) {
         menu.setActive(MenuType::MISC);
         menu.draw();
-
-    } else if (gConf.menu_mode == 3) {
-
-        menu.setActive(MenuType::SAVE);
-        menu.draw();
-
-    } else if (gConf.menu_mode == 4) {
-
-        menu.setActive(MenuType::OVER);
-        menu.draw();
-
+        menu.setActive(MenuType::OPTS);
     }
 
     glEnable(GL_DEPTH_TEST);
@@ -269,8 +214,8 @@ void draw_menu()
 
 void calculate()
 {
-    if ( gConf.menu_mode == 1 )
-        if (!tetris.update()) gConf.menu_mode = 4; // GAME OVER
+    if ( menu.getActive() == MenuType::GAME )
+        if (!tetris.update()) menu.setActive(MenuType::OVER); // GAME OVER
 }
 
 void render() {
@@ -299,7 +244,9 @@ void render() {
 
 
 
-    if (gConf.menu_mode == 1 || gConf.menu_mode == 3 || gConf.menu_mode == 4)
+    if (menu.getActive()==MenuType::GAME ||
+        menu.getActive()==MenuType::SAVE ||
+        menu.getActive()==MenuType::OVER )
     {
 
         displayLayout.selectPanel();
@@ -562,11 +509,11 @@ void build_menu()
 
     menu.addButton( MenuType::SAVE,
         texmanager.get("menu/yes.bmp"),
-        ButtonValue::NONE, 0, 0, 1, 2);
+        ButtonValue::SAVE_YES, 0, 0, 1, 2);
 
     menu.addButton( MenuType::SAVE,
         texmanager.get("menu/no.bmp"),
-        ButtonValue::NONE, 1, 0, 1, 1);
+        ButtonValue::SAVE_NO, 1, 0, 1, 1);
 
     menu.addButton( MenuType::SAVE,
         texmanager.get("menu/return.bmp"),
@@ -577,24 +524,6 @@ void build_menu()
         texmanager.get("menu/return.bmp"),
         ButtonValue::BACK, 2, 0, 1, 0);
 
-
-/*
-    texmanager.add("menu/start.bmp");
-    texmanager.add("menu/settings.bmp");
-    texmanager.add("menu/exit.bmp");
-    texmanager.add("menu/arrow_down.bmp");
-    texmanager.add("menu/arrow_left.bmp");
-    texmanager.add("menu/arrow_right.bmp");
-    texmanager.add("menu/rotate.bmp");
-    texmanager.add("menu/return.bmp");
-    texmanager.add("menu/fullscreen.bmp");
-    texmanager.add("menu/window.bmp");
-    texmanager.add("menu/texture.bmp");
-    texmanager.add("menu/mystery.bmp");
-    texmanager.add("menu/yes.bmp");
-    texmanager.add("menu/no.bmp");
-    texmanager.add("menu/save.bmp");
-*/
 }
 
 
@@ -838,49 +767,42 @@ int main(int argc, char **argv)
                 break;
 
             case SDL_MOUSEBUTTONDOWN:
-                if (event.button.button==SDL_BUTTON_LEFT)
-                    menu_click(event.button.x, event.button.y);
+                if (event.button.button==SDL_BUTTON_LEFT) {
+                    ButtonValue menu_code = menu_click(event.button.x, event.button.y);
+                    if (menu_code!=ButtonValue::NONE) menu_update(menu_code);
+                }
                 break;
-
 
             default:
                 break;
             }
         }
 
-        if (gConf.menu_mode == 1) {
+        if (menu.getActive()==MenuType::GAME) {
             /* Fill the game's keymap */
             Uint8 *key_state = SDL_GetKeyboardState(NULL);
 
             int m_x, m_y;
             if (SDL_GetMouseState(&m_x, &m_y) & SDL_BUTTON(1))
             {
-                if (displayLayout.isLandscape()) {
-                    if (m_x>=(int)displayLayout.mainWidth)
-                    {
-                        m_x-=displayLayout.mainWidth;
-                        m_x = m_x*2/displayLayout.controlWidth;
-                        m_y = m_y*3/displayLayout.controlHeight;
-                    }
-                } else {
-                    if (m_y>=(int)displayLayout.mainHeight)
-                    {
-                        m_y-=displayLayout.mainWidth;
-                        m_x = m_x*3/displayLayout.controlWidth;
-                        m_y = m_y*2/displayLayout.controlHeight;
-                    }
-                }
 
-                if (m_y==0) {
-                    if (m_x==0)
-                        tetris.moveLeft();
-                    else if (m_x==1)
-                        tetris.moveRight();
-                } else if (m_y==1) {
-                    if (m_x==0)
-                        tetris.rotate();
-                    else if (m_x==1)
-                        tetris.moveDown();
+                ButtonValue menu_code = menu_click(event.button.x, event.button.y);
+                switch (menu_code)
+                {
+                case ButtonValue::GAME_LEFT:
+                    tetris.moveLeft();
+                    break;
+                case ButtonValue::GAME_RIGHT:
+                    tetris.moveRight();
+                    break;
+                case ButtonValue::GAME_ROTATE:
+                    tetris.rotate();
+                    break;
+                case ButtonValue::GAME_DOWN:
+                    tetris.moveDown();
+                    break;
+                default:
+                    break;
                 }
 
             }

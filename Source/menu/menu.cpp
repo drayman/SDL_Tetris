@@ -2,10 +2,15 @@
 
 #include "menu/menu.h"
 
+#include "log/log.h"
+
 Menu::Menu(unsigned int landscape_x_size, unsigned int landscape_y_size)
 {
     x_size = landscape_x_size;
     y_size = landscape_y_size;
+
+    width = 0;
+    height = 0;
 
     active = static_cast<MenuType>(0);
 }
@@ -71,6 +76,28 @@ void Menu::enableButton(
     menu_store[static_cast<int>(menu_set)]->landscape[landscape_x][landscape_y]->enabled = enable_draw;
 }
 
+
+ButtonValue Menu::getButtonValue(unsigned int x_pos, unsigned int y_pos)
+{
+    if (width == 0 || height == 0) return ButtonValue::NONE;
+
+    unsigned int menu_x, menu_y;
+
+    if (landscape) {
+        menu_x = x_pos*x_size/width;
+        menu_y = (height-y_pos)*y_size/height;
+        if (menu_store[static_cast<int>(active)]->landscape[menu_x][menu_y]!=NULL)
+            return menu_store[static_cast<int>(active)]->landscape[menu_x][menu_y]->value;
+    } else {
+        menu_x = x_pos*y_size/width;
+        menu_y = (height-y_pos)*x_size/height;
+        if (menu_store[static_cast<int>(active)]->portrait[menu_x][menu_y]!=NULL)
+            return menu_store[static_cast<int>(active)]->portrait[menu_x][menu_y]->value;
+    }
+    return ButtonValue::NONE;
+}
+
+
 void Menu::setActive(MenuType active_set) {
     //if (menu_store.count(static_cast<int>(active_set)) > 0)
         active = active_set;
@@ -84,6 +111,8 @@ MenuType Menu::getActive() {
 
 void Menu::draw()
 {
+    if (width == 0 || height == 0) return;
+
     glPushMatrix();
 
     // create the id to acces the menuset

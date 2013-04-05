@@ -46,10 +46,10 @@
 	<File name="../Source/game/table.h" open="0" top="0" tabpos="3">
 		<Cursor position="636" topLine="1" />
 	</File>
-	<File name="../Source/game/tetris.cpp" open="1" top="0" tabpos="2">
+	<File name="../Source/game/tetris.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="4953" topLine="161" />
 	</File>
-	<File name="../Source/game/tetris.h" open="1" top="0" tabpos="3">
+	<File name="../Source/game/tetris.h" open="0" top="0" tabpos="3">
 		<Cursor position="663" topLine="0" />
 	</File>
 	<File name="../Source/game/tetromino.cpp" open="0" top="0" tabpos="6">
@@ -64,20 +64,20 @@
 	<File name="../Source/gfx/skybox.h" open="0" top="0" tabpos="4">
 		<Cursor position="278" topLine="0" />
 	</File>
-	<File name="../Source/main.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="452" topLine="7" />
+	<File name="../Source/main.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="1833" topLine="89" />
 	</File>
-	<File name="../Source/menu/menu.cpp" open="1" top="0" tabpos="5">
-		<Cursor position="587" topLine="0" />
+	<File name="../Source/menu/menu.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="2791" topLine="68" />
 	</File>
-	<File name="../Source/menu/menu.h" open="1" top="1" tabpos="4">
-		<Cursor position="1375" topLine="22" />
+	<File name="../Source/menu/menu.h" open="1" top="0" tabpos="2">
+		<Cursor position="3543" topLine="69" />
 	</File>
-	<File name="../Source/menu/menu_values.h" open="0" top="0" tabpos="0">
-		<Cursor position="112" topLine="0" />
+	<File name="../Source/menu/menu_values.h" open="1" top="0" tabpos="4">
+		<Cursor position="407" topLine="0" />
 	</File>
-	<File name="../Source/mesh/button_mesh.h" open="0" top="0" tabpos="0">
-		<Cursor position="429" topLine="0" />
+	<File name="../Source/mesh/button_mesh.h" open="0" top="0" tabpos="5">
+		<Cursor position="600" topLine="0" />
 	</File>
 	<File name="../Source/mesh/mesh.h" open="0" top="0" tabpos="0">
 		<Cursor position="0" topLine="7" />
@@ -86,7 +86,10 @@
 		<Cursor position="1044" topLine="30" />
 	</File>
 	<File name="../Source/system/display.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="1916" topLine="81" />
+		<Cursor position="1916" topLine="36" />
+	</File>
+	<File name="../Source/system/display.h" open="0" top="0" tabpos="0">
+		<Cursor position="298" topLine="0" />
 	</File>
 	<File name="../Source/system/resource_manager.h" open="0" top="0" tabpos="0">
 		<Cursor position="1262" topLine="0" />

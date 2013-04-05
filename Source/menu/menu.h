@@ -9,8 +9,6 @@
 #include <vector>
 #include <map>
 
-#include "log/log.h"
-
 class Menu
 {
 public:
@@ -43,17 +41,21 @@ public:
         bool enable_draw = true
     );
 
-    /// Enable/Disable drawing the button
-    /// @param menu_set MenuType enum, defined in menu_values.h
-    /// @param landscape_x Button's X position in landscape mode
-    /// @param landscape_y Button's Y position in landscape mode
-    /// @param enable_draw Set drawing of this button
-    /// @see MenuType
+    /** Enable/Disable drawing the button
+     *  @param menu_set MenuType enum, defined in menu_values.h
+     *  @param landscape_x Button's X position in landscape mode
+     *  @param landscape_y Button's Y position in landscape mode
+     *  @param enable_draw Set drawing of this button
+     *  @see MenuType
+     */
     void enableButton(
         MenuType menu_set,
         unsigned int landscape_x, unsigned int landscape_y,
         bool enable_draw
     );
+
+    /// Returns the value of the button under the given coordinates
+    ButtonValue getButtonValue(unsigned int x_pos, unsigned int y_pos);
 
     /// Set the active menu for drawing
     /// @param active_set MenuType enum, defined in menu_values.h
@@ -84,8 +86,6 @@ private:
             value(return_value),
             enabled(enable_draw)
         {}
-
-~MenuButton(){LOGW("Button killed");}
 
         /// Pointer to the button's texture
         std::shared_ptr<Texture> texture;
