@@ -196,7 +196,6 @@ void draw_menu()
     glDisable(GL_LIGHTING);
     glEnable(GL_TEXTURE_2D);
 
-    glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable (GL_BLEND);
 
     menu.draw();
@@ -254,7 +253,6 @@ void render() {
         glDisable(GL_LIGHTING);
         glDisable(GL_TEXTURE_2D);
 
-        glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glEnable (GL_BLEND);
         glColor4f(1.0f,1.0f,1.0f,0.2f);
         panel.draw();
@@ -375,6 +373,10 @@ void InitGL()                  // We call this right after our OpenGL window is 
     // The Type Of Depth Test To Do
     glDepthFunc( GL_LEQUAL );
 
+    // The only blending type we use
+    glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    // Colors affects textures
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 
     // Really Nice Perspective Calculations
@@ -530,8 +532,8 @@ void build_menu()
 void load_textures_draw(int ratio)
 {
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-    glColor4f((float)(100-ratio)/100, (float)(100-ratio)/100, (float)(100-ratio)/100, 1.0f);
-    g_Font.draw_text( (displayLayout.isLandscape())?(1.7f):(2.7f), 0.3f, 0.0f, "Loading");
+    glColor4f(0.8f, 0.8f, 0.8f, (float)(100-ratio)/100);
+    menu.draw();
     SDL_GL_SwapWindow(window);
 }
 
@@ -543,22 +545,17 @@ void load_textures()
     texmanager.respath="";
 #   endif
 
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    menu.addButton( MenuType::OVER,
+        texmanager.get("menu/loading.bmp"),
+        ButtonValue::NONE, 2, 0, 1, 0);
+
+    menu.setActive( MenuType::OVER);
+    menu.useColors(false);
+
     displayLayout.selectControls();
 
-    g_Font.set_texture( texmanager.get("font.bmp"), 256, 256, 20, 26, ' ' );
-    g_Font.set_align( Font::FontAlign::RIGHT );
-
-    if ( displayLayout.isLandscape() )
-        if ( displayLayout.controlWidth > displayLayout.controlHeight*0.667f )
-            g_Font.set_size((float)displayLayout.controlHeight/displayLayout.controlWidth*0.667f*0.2f, 0.26f);
-        else
-            g_Font.set_size(0.2f, (float)displayLayout.controlWidth/displayLayout.controlHeight*1.5f*0.26f);
-    else
-        if ( displayLayout.controlWidth > displayLayout.controlHeight*1.5f )
-            g_Font.set_size((float)displayLayout.controlHeight/displayLayout.controlWidth*1.5f*0.2f, 0.26f);
-        else
-            g_Font.set_size(0.2f, (float)displayLayout.controlWidth/displayLayout.controlHeight*0.667f*0.26f);
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glEnable(GL_BLEND);
 
     load_textures_draw(0);
 
@@ -568,25 +565,25 @@ void load_textures()
 
     tetris.initTextures();
 
+    g_Font.set_texture( texmanager.get("font.bmp"), 256, 256, 20, 26, ' ' );
+
     texmanager.add("menu/start.bmp");
     texmanager.add("menu/settings.bmp");
     texmanager.add("menu/exit.bmp");
     texmanager.add("menu/arrow_down.bmp");
     texmanager.add("menu/arrow_left.bmp");
-    load_textures_draw(15);
     texmanager.add("menu/arrow_right.bmp");
     texmanager.add("menu/rotate.bmp");
+    load_textures_draw(15);
     texmanager.add("menu/return.bmp");
     texmanager.add("menu/fullscreen.bmp");
     texmanager.add("menu/window.bmp");
     texmanager.add("menu/texture.bmp");
-    //texmanager.add("menu/x.bmp");
     texmanager.add("menu/mystery.bmp");
     texmanager.add("menu/yes.bmp");
     texmanager.add("menu/no.bmp");
     texmanager.add("menu/save.bmp");
-
-    build_menu();
+    texmanager.add("menu/bye.bmp");
 
     load_textures_draw(30);
     texmanager.add("skybox/south.bmp");
@@ -615,31 +612,29 @@ void load_textures()
     );
 
     texmanager.prefix="";
+
+    menu.setActive( MenuType::MAIN);
+    menu.useColors(true);
 }
 
 void fade_quit()
 {
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    menu.addButton( MenuType::OVER,
+        texmanager.get("menu/bye.bmp"),
+        ButtonValue::NONE, 2, 0, 1, 0);
+
+    menu.setActive( MenuType::OVER);
+    menu.useColors(false);
 
     displayLayout.selectControls();
 
-    g_Font.set_align( Font::FontAlign::RIGHT );
-
-    if ( displayLayout.isLandscape() )
-        if ( displayLayout.controlWidth > displayLayout.controlHeight*0.667f )
-            g_Font.set_size((float)displayLayout.controlHeight/displayLayout.controlWidth*0.667f*0.2f, 0.26f);
-        else
-            g_Font.set_size(0.2f, (float)displayLayout.controlWidth/displayLayout.controlHeight*1.5f*0.26f);
-    else
-        if ( displayLayout.controlWidth > displayLayout.controlHeight*1.5f )
-            g_Font.set_size((float)displayLayout.controlHeight/displayLayout.controlWidth*1.5f*0.2f, 0.26f);
-        else
-            g_Font.set_size(0.2f, (float)displayLayout.controlWidth/displayLayout.controlHeight*0.667f*0.26f);
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glEnable(GL_BLEND);
 
     for(int i = 100; i>=0; i-=5) {
         glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-        glColor4f((float)i/100, (float)i/100, (float)i/100, 1.0f);
-        g_Font.draw_text( (displayLayout.isLandscape())?(1.7f):(2.7f), 0.3f, 0.0f, "Bye!");
+        glColor4f(0.8f, 0.8f, 0.8f, (float)i/100);
+        menu.draw();
         SDL_Delay(50);
         SDL_GL_SwapWindow(window);
     }
@@ -681,6 +676,8 @@ int main(int argc, char **argv)
     init_control_buttons();
 
     load_textures();
+
+    build_menu();
 
     tetris.init();
 

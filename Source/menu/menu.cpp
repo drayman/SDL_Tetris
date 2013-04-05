@@ -12,6 +12,8 @@ Menu::Menu(unsigned int landscape_x_size, unsigned int landscape_y_size)
     width = 0;
     height = 0;
 
+    colors = true;
+
     active = static_cast<MenuType>(0);
 }
 
@@ -109,9 +111,17 @@ MenuType Menu::getActive() {
 }
 
 
+void Menu::useColors(bool enable_mesh_colors)
+{
+    colors = enable_mesh_colors;
+}
+
+
 void Menu::draw()
 {
     if (width == 0 || height == 0) return;
+
+    buttonMesh.draw_init(false, colors);
 
     glPushMatrix();
 
@@ -133,7 +143,7 @@ void Menu::draw()
             if (button_ptr != NULL && button_ptr->enabled )
             {
                 button_ptr->texture->bind();
-                buttonMesh.draw();
+                buttonMesh.draw_only();
             }
 
             // move next button in the column
@@ -145,6 +155,8 @@ void Menu::draw()
     }
 
     glPopMatrix();
+
+    buttonMesh.draw_close();
 }
 
 

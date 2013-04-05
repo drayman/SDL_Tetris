@@ -66,6 +66,9 @@ public:
     /// @see MenuType
     MenuType getActive();
 
+    /// To override the default colors provided by the button mesh
+    void useColors(bool enable_mesh_colors);
+
     /// Draw the menu activated previously by setActive()
     /// @see setActive
     /// @see MenuType
@@ -127,6 +130,9 @@ private:
 
     /// Flag of landscape mode
     bool landscape;
+
+    /// Indicates whether to use the mesh embedded colors
+    bool colors;
 
     /// Number of buttons in landscape mode
     unsigned int x_size, y_size;
