@@ -77,18 +77,15 @@ void toggle_fullscreen()
     texmanager.get((gConf.fullscreen)?"menu/window.bmp":"menu/fullscreen.bmp"),
     ButtonValue::OPTS_FULLSCREEN, 0, 0, 0, 1);
 
-/*
-    if (gConf.fullscreen)
+    if (gConf.fullscreen){
         displayLayout.fullscreenMode();
-    else
+        SDL_SetWindowSize(window, displayLayout.width, displayLayout.height);
+        SDL_SetWindowFullscreen(window, SDL_TRUE);
+    } else {
         displayLayout.windowMode();
-*/
-
-    displayLayout.toggleMode();
-
-    SDL_SetWindowSize(window, displayLayout.width, displayLayout.height);
-
-    SDL_SetWindowFullscreen(window, gConf.fullscreen);
+        SDL_SetWindowFullscreen(window, SDL_FALSE);
+        SDL_SetWindowSize(window, displayLayout.width, displayLayout.height);
+    }
 
     init_control_buttons();
 }
