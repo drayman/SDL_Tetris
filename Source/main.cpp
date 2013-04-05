@@ -73,8 +73,6 @@ void init_control_buttons()
 
 void toggle_fullscreen()
 {
-    SDL_SetWindowFullscreen(window, gConf.fullscreen);
-
     menu.addButton( MenuType::OPTS,
     texmanager.get((gConf.fullscreen)?"menu/window.bmp":"menu/fullscreen.bmp"),
     ButtonValue::OPTS_FULLSCREEN, 0, 0, 0, 1);
@@ -89,6 +87,8 @@ void toggle_fullscreen()
     displayLayout.toggleMode();
 
     SDL_SetWindowSize(window, displayLayout.width, displayLayout.height);
+
+    SDL_SetWindowFullscreen(window, gConf.fullscreen);
 
     init_control_buttons();
 }
@@ -412,7 +412,7 @@ void createWindow()
 
     displayLayout.setFullscreenSize(current.w, current.h);
 #	ifdef DESKTOP_DETECTED
-    displayLayout.setWindowSize(480,800);
+    displayLayout.setWindowSize(360,600);
     displayLayout.windowMode();
     gConf.fullscreen = false;
 #   else
@@ -478,9 +478,9 @@ void build_menu()
         ButtonValue::BACK, 2, 0, 1, 0);
 
 
-
     menu.addButton( MenuType::OPTS,
-        texmanager.get("menu/fullscreen.bmp"),
+        texmanager.get((gConf.fullscreen)?"menu/window.bmp"
+                                         :"menu/fullscreen.bmp"),
         ButtonValue::OPTS_FULLSCREEN, 0, 0, 0, 1);
 
     menu.addButton( MenuType::OPTS,
@@ -544,6 +544,11 @@ void load_textures()
     texmanager.respath="";
 #   endif
 
+    g_Font.set_texture( texmanager.get("font.bmp"), 256, 256, 20, 26, ' ' );
+
+    if ( displayLayout.fullscreenWidth  < 500 || displayLayout.fullscreenHeight  < 500)
+        texmanager.prefix="s_";
+
     menu.addButton( MenuType::OVER,
         texmanager.get("menu/loading.bmp"),
         ButtonValue::NONE, 2, 0, 1, 0);
@@ -554,17 +559,13 @@ void load_textures()
     displayLayout.selectControls();
 
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    SDL_GL_SwapWindow(window);
+
     glEnable(GL_BLEND);
 
     load_textures_draw(0);
 
-
-    if ( displayLayout.fullscreenWidth  < 500 || displayLayout.fullscreenHeight  < 500)
-        texmanager.prefix="s_";
-
     tetris.initTextures();
-
-    g_Font.set_texture( texmanager.get("font.bmp"), 256, 256, 20, 26, ' ' );
 
     texmanager.add("menu/start.bmp");
     texmanager.add("menu/settings.bmp");
@@ -776,13 +777,11 @@ int main(int argc, char **argv)
 
         if (menu.getActive()==MenuType::GAME) {
             /* Fill the game's keymap */
-            Uint8 *key_state = SDL_GetKeyboardState(NULL);
 
             int m_x, m_y;
             if (SDL_GetMouseState(&m_x, &m_y) & SDL_BUTTON(1))
             {
-
-                ButtonValue menu_code = menu_click(event.button.x, event.button.y);
+                ButtonValue menu_code = menu_click(m_x, m_y);
                 switch (menu_code)
                 {
                 case ButtonValue::GAME_LEFT:
@@ -802,6 +801,8 @@ int main(int argc, char **argv)
                 }
 
             }
+
+            Uint8 *key_state = SDL_GetKeyboardState(NULL);
 
             if ( key_state[SDL_SCANCODE_LEFT] )
                 tetris.moveLeft();
