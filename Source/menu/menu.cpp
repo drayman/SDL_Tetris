@@ -52,7 +52,7 @@ void Menu::addButton(
     ButtonValue return_value,
     unsigned int landscape_x, unsigned int landscape_y,
     unsigned int portrait_x, unsigned int portrait_y,
-    bool enable_draw)
+    bool* enable_draw)
 {
     // create the id we gonna use to acces the menu
     int menu_id = static_cast<int>(menu_set);
@@ -67,15 +67,6 @@ void Menu::addButton(
     // insert it
     menu_store[menu_id]->landscape[landscape_x][landscape_y] = newButton;
     menu_store[menu_id]->portrait[portrait_x][portrait_y] = newButton;
-}
-
-
-void Menu::enableButton(
-    MenuType menu_set,
-    unsigned int landscape_x, unsigned int landscape_y,
-    bool enable_draw)
-{
-    menu_store[static_cast<int>(menu_set)]->landscape[landscape_x][landscape_y]->enabled = enable_draw;
 }
 
 
@@ -139,8 +130,10 @@ void Menu::draw()
             auto button_ptr = (landscape)?menu_store[menu_id]->landscape[x][y]
                                          :menu_store[menu_id]->portrait[x][y];
 
-            // check if it's enabled
-            if (button_ptr != NULL && button_ptr->enabled )
+            // check if it exists, and if it's connected then it's enabled
+            if (button_ptr != NULL &&               // it's a button here
+               (button_ptr->enabled == NULL ||      // it's not connected
+               (button_ptr->enabled != NULL && *button_ptr->enabled)))  // it's connected and it's true
             {
                 button_ptr->texture->bind();
                 buttonMesh.draw_only();

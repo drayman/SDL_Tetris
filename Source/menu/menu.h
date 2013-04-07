@@ -38,20 +38,7 @@ public:
         ButtonValue return_value,
         unsigned int landscape_x, unsigned int landscape_y,
         unsigned int portrait_x, unsigned int portrait_y,
-        bool enable_draw = true
-    );
-
-    /** Enable/Disable drawing the button
-     *  @param menu_set MenuType enum, defined in menu_values.h
-     *  @param landscape_x Button's X position in landscape mode
-     *  @param landscape_y Button's Y position in landscape mode
-     *  @param enable_draw Set drawing of this button
-     *  @see MenuType
-     */
-    void enableButton(
-        MenuType menu_set,
-        unsigned int landscape_x, unsigned int landscape_y,
-        bool enable_draw
+        bool* enable_draw = NULL
     );
 
     /// Returns the value of the button under the given coordinates
@@ -83,7 +70,7 @@ private:
         MenuButton(
 	        std::shared_ptr<Texture> button_texture,
 	        ButtonValue return_value,
-	        bool enable_draw = true
+	        bool* enable_draw = NULL
         ):
             texture(button_texture),
             value(return_value),
@@ -96,8 +83,8 @@ private:
         /// The return value of the button
         ButtonValue value;
 
-        /// Enable/Disable drawing of this button
-        bool enabled;
+        /// To enable/disable drawing the button it can be connected to a boolean
+        bool* enabled;
 
     };
 

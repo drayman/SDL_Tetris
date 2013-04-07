@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
-	<ActiveTarget name="Release-Linux64" />
+	<ActiveTarget name="Debug-Win32" />
 	<File name="../Source/animation/alpha_animation.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="46" topLine="0" />
 	</File>
@@ -34,6 +34,12 @@
 	<File name="../Source/game/brick.h" open="0" top="0" tabpos="0">
 		<Cursor position="1114" topLine="10" />
 	</File>
+	<File name="../Source/game/key_map.cpp" open="1" top="1" tabpos="4">
+		<Cursor position="523" topLine="10" />
+	</File>
+	<File name="../Source/game/key_map.h" open="1" top="0" tabpos="5">
+		<Cursor position="545" topLine="0" />
+	</File>
 	<File name="../Source/game/message_queue.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="534" topLine="3" />
 	</File>
@@ -46,11 +52,11 @@
 	<File name="../Source/game/table.h" open="0" top="0" tabpos="3">
 		<Cursor position="636" topLine="1" />
 	</File>
-	<File name="../Source/game/tetris.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="4953" topLine="161" />
+	<File name="../Source/game/tetris.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="4953" topLine="0" />
 	</File>
-	<File name="../Source/game/tetris.h" open="0" top="0" tabpos="3">
-		<Cursor position="663" topLine="0" />
+	<File name="../Source/game/tetris.h" open="1" top="0" tabpos="3">
+		<Cursor position="663" topLine="7" />
 	</File>
 	<File name="../Source/game/tetromino.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="1372" topLine="185" />
@@ -64,16 +70,16 @@
 	<File name="../Source/gfx/skybox.h" open="0" top="0" tabpos="4">
 		<Cursor position="278" topLine="0" />
 	</File>
-	<File name="../Source/main.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="22290" topLine="754" />
+	<File name="../Source/main.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="3029" topLine="104" />
 	</File>
-	<File name="../Source/menu/menu.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="2791" topLine="57" />
+	<File name="../Source/menu/menu.cpp" open="0" top="0" tabpos="3">
+		<Cursor position="3819" topLine="33" />
 	</File>
-	<File name="../Source/menu/menu.h" open="1" top="0" tabpos="2">
-		<Cursor position="3543" topLine="76" />
+	<File name="../Source/menu/menu.h" open="0" top="0" tabpos="2">
+		<Cursor position="1244" topLine="20" />
 	</File>
-	<File name="../Source/menu/menu_values.h" open="1" top="0" tabpos="4">
+	<File name="../Source/menu/menu_values.h" open="0" top="0" tabpos="4">
 		<Cursor position="407" topLine="0" />
 	</File>
 	<File name="../Source/mesh/button_mesh.h" open="0" top="0" tabpos="5">

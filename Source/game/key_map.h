@@ -26,8 +26,10 @@ public:
 private:
 
     unsigned char key_delay[4];
+    unsigned char key_repeat[4];
     unsigned char key_interval[4];
     unsigned char interval;
+    bool repeat_mode;
 };
 
 #endif // KEY_MAP_H

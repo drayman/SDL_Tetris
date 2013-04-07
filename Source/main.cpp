@@ -38,16 +38,29 @@ struct GameConfig {
 
     GameConfig() :
         fullscreen(true),
+        keyrepeat(false),
         textures(true),
         mystery(false),
         done(false)
         {}
 
     bool fullscreen;
+    bool keyrepeat;
     bool textures;
     bool mystery;
     bool done;
 } gConf;
+
+
+struct MenuConfig {
+
+    MenuConfig() :
+        disabled_textures(false),
+        disabled_mystery(true)
+        {}
+    bool disabled_textures;
+    bool disabled_mystery;
+} mConf;
 
 
 float g_fYrot = 0;
@@ -133,12 +146,15 @@ void menu_update(ButtonValue menu_code)
         switch (menu_code)
         {
         case ButtonValue::OPTS_TEXTURES:
-            menu.enableButton( MenuType::MISC, 0, 1, gConf.textures);
+            mConf.disabled_textures = gConf.textures;
             gConf.textures = !gConf.textures;
             break;
         case ButtonValue::OPTS_MYSTERY:
-            menu.enableButton( MenuType::MISC, 1, 1, gConf.mystery);
+            mConf.disabled_mystery = gConf.mystery;
             gConf.mystery = !gConf.mystery;
+            break;
+        case ButtonValue::OPTS_KEYS:
+            gConf.keyrepeat = !gConf.keyrepeat;
             break;
         case ButtonValue::OPTS_FULLSCREEN:
             gConf.fullscreen = !gConf.fullscreen;
@@ -481,6 +497,10 @@ void build_menu()
         ButtonValue::OPTS_FULLSCREEN, 0, 0, 0, 1);
 
     menu.addButton( MenuType::OPTS,
+        texmanager.get("menu/keys.bmp"),
+        ButtonValue::OPTS_KEYS, 1, 0, 1, 1);
+
+    menu.addButton( MenuType::OPTS,
         texmanager.get("menu/texture.bmp"),
         ButtonValue::OPTS_TEXTURES, 0, 1, 0, 2);
 
@@ -494,11 +514,15 @@ void build_menu()
 
     menu.addButton( MenuType::MISC,
         texmanager.get("menu/no.bmp"),
-        ButtonValue::NONE, 0, 1, 0, 2, false);
+        ButtonValue::NONE, 0, 1, 0, 2, &mConf.disabled_textures);
 
     menu.addButton( MenuType::MISC,
         texmanager.get("menu/no.bmp"),
-        ButtonValue::NONE, 1, 1, 1, 2);
+        ButtonValue::NONE, 1, 1, 1, 2, &mConf.disabled_mystery);
+
+    menu.addButton( MenuType::MISC,
+        texmanager.get("menu/rotate.bmp"),
+        ButtonValue::NONE, 1, 0, 1, 1, &gConf.keyrepeat);
 
 
     menu.addButton( MenuType::SAVE,

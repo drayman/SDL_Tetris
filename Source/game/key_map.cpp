@@ -29,7 +29,7 @@ void KeyMap::clearKey(KeyType key)
 }
 
 
-void KeyMap::update()
+void KeyMap::update(unsigned int time_spent)
 {
     for (int i=0; i<4; i++) {
         if (key_delay[i]>0) key_delay[i]--;
