@@ -546,6 +546,7 @@ void build_menu()
         texmanager.get("menu/return.bmp"),
         ButtonValue::BACK, 2, 0, 1, 0);
 
+    menu.setActive(MenuType::MAIN);
 }
 
 

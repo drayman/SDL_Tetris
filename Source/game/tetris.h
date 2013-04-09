@@ -3,7 +3,7 @@
 
 #include "mesh/cube_mesh.h"
 #include "game/tetromino.h"
-#include "game/key_map.h"
+#include "keymap/keymap.h"
 #include "game/table.h"
 #include "game/message_queue.h"
 #include "texture/texture_manager.h"

@@ -20,6 +20,11 @@ Tetris::Tetris
 
     cube.scale(0.9f,0.9f,0.9f);
 
+    keyMap.registerKey(KeyType::LEFT, 3);
+    keyMap.registerKey(KeyType::RIGHT, 3);
+    keyMap.registerKey(KeyType::DOWN, 3);
+    keyMap.registerKey(KeyType::ROTATE, 6);
+
 }
 
 void Tetris::init()
@@ -33,7 +38,7 @@ void Tetris::reset()
 
     table.reset();
 
-    keyMap.reset();
+    keyMap.clear();
 
     nextRot = 0.0f;
     nextAccel = 2.0f;
@@ -61,26 +66,26 @@ void Tetris::initTextures()
 
 void Tetris::moveLeft()
 {                   // not like in c++11 enum class, KeyType is optional
-    keyMap.setKey(KeyMap::LEFT);
+    keyMap.pressKey(KeyType::LEFT);
 }
 
 
 void Tetris::moveRight()
 {
-    keyMap.setKey(KeyMap::RIGHT);
+    keyMap.pressKey(KeyType::RIGHT);
 }
 
 
 void Tetris::moveDown()
 {
     /// TODO: if not in move
-    keyMap.setKey(KeyMap::DOWN);
+    keyMap.pressKey(KeyType::DOWN);
 }
 
 
 void Tetris::rotate()
 {
-    keyMap.setKey(KeyMap::ROTATE);
+    keyMap.pressKey(KeyType::ROTATE);
 }
 
 
@@ -221,7 +226,7 @@ bool Tetris::update()
         ticks_left--;
 
 
-        if (keyMap.getKey(KeyMap::LEFT))
+        if (keyMap.getKey(KeyType::LEFT))
         {
             curr_x--;
             if (!table.tetroCanFit(currTetro.get(), curr_x, curr_y))
@@ -231,7 +236,7 @@ bool Tetris::update()
         }
 
 
-        if (keyMap.getKey(KeyMap::RIGHT))
+        if (keyMap.getKey(KeyType::RIGHT))
         {
             curr_x++;
             if (!table.tetroCanFit(currTetro.get(), curr_x, curr_y))
@@ -240,13 +245,13 @@ bool Tetris::update()
                 createRightAnim();
         }
 
-        if (keyMap.getKey(KeyMap::DOWN))
+        if (keyMap.getKey(KeyType::DOWN))
         {
             ticks_left = 0;
             score+=level+1;
         }
 
-        if (keyMap.getKey(KeyMap::ROTATE))
+        if (keyMap.getKey(KeyType::ROTATE))
         {
             rotateTetro();
             if (!table.tetroCanFit(currTetro.get(), curr_x, curr_y))
@@ -334,7 +339,7 @@ bool Tetris::update()
             stage = 0;
     }
 
-    keyMap.update();
+    keyMap.update(1);
 
     // Rotate the next tetro indicator
     if      (nextRot < 360 && nextRot >= 255) nextAccel-=0.1f;

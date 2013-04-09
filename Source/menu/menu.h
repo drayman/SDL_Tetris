@@ -3,7 +3,8 @@
 
 #include "texture/texture.h"
 #include "mesh/button_mesh.h"
-#include "menu/menu_values.h"
+
+#include "menu/menu_values.h"  // This time my linux gcc is who doesn't support enum forward declarations. Shit.
 
 #include <memory>
 #include <vector>
@@ -109,7 +110,7 @@ private:
 
     };
 
-    /// Vector to keep track of main- and submenus
+    /// Map to keep track of main- and submenus
     std::map<int, MenuSet*> menu_store;
 
     /// ID of the currently active menu
