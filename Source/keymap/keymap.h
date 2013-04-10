@@ -23,12 +23,22 @@ public:
     /// @param time_spent Time spent since the last update
     void update(unsigned int time_spent);
 
-    /// Call this "presses the button"
+    /// Call this "presses the button". If key repeat is disbled,
+    /// releaseKey needs to be called before the key can be pressed again.
     /// @param key The id of the key
     /// @see KeyType
+    /// @see releaseKey
     void pressKey(KeyType key);
 
-    /// Returns the calculated amount of keypresses since the last update
+    /// If key repeat is disabled, this needs to be called manually
+    /// before calling any pressKey again.
+    /// @param key The id of the key
+    /// @see KeyType
+    /// @see pressKeyKey
+    void releaseKey(KeyType key);
+
+    /// Returns the amount of keypresses since the last update
+    /// The call sets the counter to zero
     /// @param key The id of the key
     /// @see KeyType
     /// @see update()
@@ -51,12 +61,14 @@ private:
         ):
             interval(repeat_interval),
             curr_time(0),
-            pressed(0)
+            pressed(0),
+            released(true)
         {}
 
-        unsigned int interval, curr_time;
-        unsigned int pressed;
-
+        unsigned int interval;      ///< Time units before the button can be pressed again
+        unsigned int curr_time;     ///< Time left until can be pressed again
+        unsigned int pressed;       ///< Amount of keypresses since the last update
+        bool released;              ///< Used if key repeat is disabled
     };
     /// Map to store our keypresses
     std::map<int, KeyPress*> key_store;

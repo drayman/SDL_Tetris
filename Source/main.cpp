@@ -38,7 +38,7 @@ struct GameConfig {
 
     GameConfig() :
         fullscreen(true),
-        keyrepeat(false),
+        keyrepeat(true),
         textures(true),
         mystery(false),
         done(false)
@@ -52,7 +52,7 @@ struct GameConfig {
 } gConf;
 
 
-struct MenuConfig {
+struct MenuConfig {         ///< This can be removed soon i freak out from it
 
     MenuConfig() :
         disabled_textures(false),
@@ -62,15 +62,18 @@ struct MenuConfig {
     bool disabled_mystery;
 } mConf;
 
-
 float g_fYrot = 0;
 
+// timers
 GLint  g_Timer           = 0;
 GLint  g_Timer2          = 0;
 GLint  g_Timer3          = 0;
 
 int frame=0;
 int FPS = 0;
+
+// prevent unwanted movement on game start and in case of a new tetro
+bool first_move = true;
 
 
 static void printGLString(const char *name, GLenum s) {
@@ -126,6 +129,7 @@ void menu_update(ButtonValue menu_code)
         {
         case ButtonValue::NEWGAME:
             menu.setActive(MenuType::GAME);
+            first_move = true;
             break;
         case ButtonValue::OPTIONS:
             menu.setActive(MenuType::OPTS);
@@ -148,6 +152,7 @@ void menu_update(ButtonValue menu_code)
         case ButtonValue::OPTS_TEXTURES:
             mConf.disabled_textures = gConf.textures;
             gConf.textures = !gConf.textures;
+            tetris.setTextureDrawing(gConf.textures);
             break;
         case ButtonValue::OPTS_MYSTERY:
             mConf.disabled_mystery = gConf.mystery;
@@ -155,6 +160,7 @@ void menu_update(ButtonValue menu_code)
             break;
         case ButtonValue::OPTS_KEYS:
             gConf.keyrepeat = !gConf.keyrepeat;
+            tetris.setKeyRepeat(gConf.keyrepeat);
             break;
         case ButtonValue::OPTS_FULLSCREEN:
             gConf.fullscreen = !gConf.fullscreen;
@@ -305,10 +311,10 @@ void render() {
 
 
         displayLayout.selectGame();
-        tetris.draw(gConf.textures);
+        tetris.draw();
 
         displayLayout.selectNext();
-        tetris.drawNext(gConf.textures);
+        tetris.drawNext();
 
     }
 
@@ -702,6 +708,8 @@ int main(int argc, char **argv)
     build_menu();
 
     tetris.init();
+    tetris.setTextureDrawing(gConf.textures);
+    tetris.setKeyRepeat(gConf.keyrepeat);
 
     /* Loop, drawing and checking events */
     while ( ! gConf.done ) {
@@ -728,6 +736,22 @@ int main(int argc, char **argv)
                 }
                 break;
 
+            case SDL_KEYUP:
+                first_move = false;
+				switch (event.key.keysym.sym) {
+                case SDLK_LEFT:
+                    tetris.releaseLeft();
+                    break;
+                case SDLK_RIGHT:
+                    tetris.releaseRight();
+                    break;
+                case SDLK_UP:
+                    tetris.releaseRotate();
+                    break;
+                default:
+                    break;
+                }
+                break;
 
             case SDL_WINDOWEVENT:
                 switch (event.window.event) {
@@ -792,12 +816,21 @@ int main(int argc, char **argv)
                 }
                 break;
 
+            case SDL_MOUSEBUTTONUP:
+                first_move = false;
+                if (event.button.button==SDL_BUTTON_LEFT) {
+                    if (menu.getActive()==MenuType::GAME) {
+                        tetris.releaseLeft();
+                        tetris.releaseRight();
+                        tetris.releaseRotate();
+                    }
+                }
             default:
                 break;
             }
         }
 
-        if (menu.getActive()==MenuType::GAME) {
+        if (menu.getActive()==MenuType::GAME && !first_move) {
             /* Fill the game's keymap */
 
             int m_x, m_y;
@@ -807,36 +840,47 @@ int main(int argc, char **argv)
                 switch (menu_code)
                 {
                 case ButtonValue::GAME_LEFT:
-                    tetris.moveLeft();
+                    if (tetris.getCurrentStage() != 0) tetris.moveLeft();
+                    else first_move = true;
                     break;
                 case ButtonValue::GAME_RIGHT:
-                    tetris.moveRight();
+                    if (tetris.getCurrentStage() != 0) tetris.moveRight();
+                    else first_move = true;
                     break;
                 case ButtonValue::GAME_ROTATE:
-                    tetris.rotate();
+                    if (tetris.getCurrentStage() != 0) tetris.rotate();
+                    else first_move = true;
                     break;
                 case ButtonValue::GAME_DOWN:
-                    tetris.moveDown();
+                    if (tetris.getCurrentStage() != 0) tetris.moveDown();
+                    else first_move = true;
                     break;
                 default:
                     break;
                 }
-
             }
 
             Uint8 *key_state = SDL_GetKeyboardState(NULL);
 
-            if ( key_state[SDL_SCANCODE_LEFT] )
-                tetris.moveLeft();
+            if ( key_state[SDL_SCANCODE_LEFT] ) {
+                if (tetris.getCurrentStage() != 0) tetris.moveLeft();
+                else first_move = true;
+            }
 
-            if ( key_state[SDL_SCANCODE_RIGHT] )
-                tetris.moveRight();
+            if ( key_state[SDL_SCANCODE_RIGHT] ) {
+                if (tetris.getCurrentStage() != 0) tetris.moveRight();
+                else first_move = true;
+            }
 
-            if ( key_state[SDL_SCANCODE_UP] )
-                tetris.rotate();
+            if ( key_state[SDL_SCANCODE_UP] ) {
+                if (tetris.getCurrentStage() != 0) tetris.rotate();
+                else first_move = true;
+            }
 
-            if ( key_state[SDL_SCANCODE_DOWN] )
-                tetris.moveDown();
+            if ( key_state[SDL_SCANCODE_DOWN] ) {
+                if (tetris.getCurrentStage() != 0) tetris.moveDown();
+                else first_move = true;
+            }
 
         }
 

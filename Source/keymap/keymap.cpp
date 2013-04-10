@@ -2,7 +2,6 @@
 
 KeyMap::KeyMap()
 {
-    repeat_mode = true;
 }
 
 KeyMap::~KeyMap()
@@ -36,11 +35,20 @@ void KeyMap::update(unsigned int time_spent)
 void KeyMap::pressKey(KeyType key)
 {
     auto keypress = key_store[static_cast<int>(key)];
-    if (!repeat_mode || keypress->curr_time==0)
+    if ((repeat_mode && keypress->curr_time==0) ||
+        (!repeat_mode && keypress->released))
     {
         keypress->curr_time = keypress->interval;
         keypress->pressed++;
+        keypress->released = false;
     }
+}
+
+
+void KeyMap::releaseKey(KeyType key)
+{
+    key_store[static_cast<int>(key)]->released = true;
+    key_store[static_cast<int>(key)]->curr_time = 0;
 }
 
 unsigned int KeyMap::getKey(KeyType key)

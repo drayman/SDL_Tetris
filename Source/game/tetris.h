@@ -19,19 +19,27 @@ public:
     void init();
     void reset();
     void initTextures();
+    void setKeyRepeat(bool repeat);
+    void setTextureDrawing(bool textures);
+    unsigned int getCurrentStage();
     bool update();
-    void draw(bool draw_textures);
-    void drawNext(bool draw_textures);
+    void draw();
+    void drawNext();
+
 
     void moveLeft();
     void moveRight();
     void moveDown();
     void rotate();
+    void releaseLeft();
+    void releaseRight();
+    void releaseRotate();
 
     unsigned int level;
     unsigned int lines;
     unsigned int score;
     unsigned int combo;
+
 
 private:
 
@@ -63,9 +71,10 @@ private:
     int curr_x;
     int curr_y;
 
-    unsigned char ticks_left;
+    bool draw_textures;
 
-    unsigned char stage;
+    unsigned int ticks_left;
+    unsigned int stage;
 
 };
 

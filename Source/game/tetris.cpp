@@ -15,15 +15,16 @@ Tetris::Tetris
     texmanager(texture_manager),
     font(character_font),
     tetroFactory(texture_manager),
-    table(texture_manager, cube)
+    table(texture_manager, cube),
+    draw_textures(true)
 {
 
     cube.scale(0.9f,0.9f,0.9f);
 
-    keyMap.registerKey(KeyType::LEFT, 3);
-    keyMap.registerKey(KeyType::RIGHT, 3);
+    keyMap.registerKey(KeyType::LEFT, 5);
+    keyMap.registerKey(KeyType::RIGHT, 5);
     keyMap.registerKey(KeyType::DOWN, 3);
-    keyMap.registerKey(KeyType::ROTATE, 6);
+    keyMap.registerKey(KeyType::ROTATE, 5);
 
 }
 
@@ -63,6 +64,22 @@ void Tetris::initTextures()
     texmanager.add("crate3.bmp");
 }
 
+void Tetris::setKeyRepeat(bool repeat)
+{
+    keyMap.repeat_mode = repeat;
+}
+
+
+void Tetris::setTextureDrawing(bool textures)
+{
+    draw_textures = textures;
+}
+
+
+unsigned int Tetris::getCurrentStage()
+{
+    return stage;
+}
 
 void Tetris::moveLeft()
 {                   // not like in c++11 enum class, KeyType is optional
@@ -79,13 +96,34 @@ void Tetris::moveRight()
 void Tetris::moveDown()
 {
     /// TODO: if not in move
+    bool temp = keyMap.repeat_mode;
+    keyMap.repeat_mode = true;
     keyMap.pressKey(KeyType::DOWN);
+    keyMap.repeat_mode = temp;
 }
 
 
 void Tetris::rotate()
 {
     keyMap.pressKey(KeyType::ROTATE);
+}
+
+
+void Tetris::releaseLeft()
+{                   // not like in c++11 enum class, KeyType is optional
+    keyMap.releaseKey(KeyType::LEFT);
+}
+
+
+void Tetris::releaseRight()
+{
+    keyMap.releaseKey(KeyType::RIGHT);
+}
+
+
+void Tetris::releaseRotate()
+{
+    keyMap.releaseKey(KeyType::ROTATE);
 }
 
 
@@ -121,7 +159,7 @@ void Tetris::createLeftAnim()
     for(unsigned char y=0; y < currTetro->shape_size; y++)
         for (unsigned char x=0; x < currTetro->shape_size; x++)
             if (currTetro->shape[y][x]->texture_ptr != NULL )
-                currTetro->shape[y][x]->leftAnim=std::unique_ptr<Animation>(new TranslateAnimation(3, -1.0f, 0.0f));
+                currTetro->shape[y][x]->leftAnim=std::unique_ptr<Animation>(new TranslateAnimation(6, -1.0f, 0.0f));
 }
 
 
@@ -130,7 +168,7 @@ void Tetris::createRightAnim()
     for(unsigned char y=0; y < currTetro->shape_size; y++)
         for (unsigned char x=0; x < currTetro->shape_size; x++)
             if (currTetro->shape[y][x]->texture_ptr != NULL )
-                currTetro->shape[y][x]->rightAnim=std::unique_ptr<Animation>(new TranslateAnimation(3, 1.0f, 0.0f));
+                currTetro->shape[y][x]->rightAnim=std::unique_ptr<Animation>(new TranslateAnimation(5, 1.0f, 0.0f));
 }
 
 
@@ -148,7 +186,7 @@ void Tetris::createRotateAnim()
     for(unsigned char y=0; y < currTetro->shape_size; y++)
         for (unsigned char x=0; x < currTetro->shape_size; x++)
             if (currTetro->shape[y][x]->texture_ptr != NULL )
-                currTetro->shape[y][x]->rotateAnim=std::unique_ptr<Animation>(new RotateAnimation(6, -90.0f,
+                currTetro->shape[y][x]->rotateAnim=std::unique_ptr<Animation>(new RotateAnimation(5, -90.0f,
                     (float)(currTetro->shape_size-1)/2-y,
                     (float)(currTetro->shape_size-1)/2-x
                     ));
@@ -229,8 +267,10 @@ bool Tetris::update()
         if (keyMap.getKey(KeyType::LEFT))
         {
             curr_x--;
-            if (!table.tetroCanFit(currTetro.get(), curr_x, curr_y))
+            if (!table.tetroCanFit(currTetro.get(), curr_x, curr_y)){
                 curr_x++;
+                keyMap.releaseKey(KeyType::LEFT);
+            }
             else
                 createLeftAnim();
         }
@@ -239,8 +279,10 @@ bool Tetris::update()
         if (keyMap.getKey(KeyType::RIGHT))
         {
             curr_x++;
-            if (!table.tetroCanFit(currTetro.get(), curr_x, curr_y))
+            if (!table.tetroCanFit(currTetro.get(), curr_x, curr_y)) {
                 curr_x--;
+                keyMap.releaseKey(KeyType::RIGHT);
+            }
             else
                 createRightAnim();
         }
@@ -259,6 +301,7 @@ bool Tetris::update()
                 rotateTetro();
                 rotateTetro();
                 rotateTetro();
+                keyMap.releaseKey(KeyType::ROTATE);
             }
             else
                 createRotateAnim();
@@ -355,7 +398,7 @@ bool Tetris::update()
 }
 
 
-void Tetris::draw(bool draw_textures)
+void Tetris::draw()
 {
     if (stage == 1) table.placeTetro(currTetro.get(), curr_x, curr_y);
     table.draw(1, draw_textures);
@@ -371,11 +414,11 @@ void Tetris::draw(bool draw_textures)
 }
 
 
-void Tetris::drawNext(bool draw_textures)
+void Tetris::drawNext()
 {
     glClear( GL_DEPTH_BUFFER_BIT );
     glEnable(GL_LIGHTING);
-    glEnable(GL_BLEND);
+    glDisable(GL_BLEND);
 
     glTranslatef(0.0f, 0.0f, -3.0f);
     glRotatef( -35, 0.0f, 1.0f, 0.0f );
