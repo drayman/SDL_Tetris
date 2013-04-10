@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" href="$texture_8h.html" title="texture/texture.h" alt="" coords="5,83,120,112"/>
+<area shape="rect" href="$skybox__mesh_8h.html" title="mesh/skybox_mesh.h" alt="" coords="144,83,293,112"/>
+<area shape="rect" href="$platform_8h.html" title="platform.h" alt="" coords="52,237,132,267"/>
+<area shape="rect" href="$mesh_8h.html" title="mesh.h" alt="" coords="181,160,245,189"/>
+</map>
