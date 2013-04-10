@@ -27,11 +27,11 @@ public:
      *    @param menu_set The target submenu id
      *    @param texture_ptr A shared_ptr pointing to the texture to use
      *    @param return_value MenuValue type, the button returns this value if selected
-     *    @param portrait_x X position in landscape mode
-     *    @param portrait_x Y position in landscape mode
+     *    @param landscape_x X position in landscape mode
+     *    @param landscape_y Y position in landscape mode
      *    @param portrait_x X position in portrait mode
-     *    @param portrait_x Y position in portrait mode
-     *    @param enabled Enable/Disable drawing of this button
+     *    @param portrait_y Y position in portrait mode
+     *    @param enable_draw Enable/Disable drawing of this button
      */
     void addButton(
         MenuType menu_set,
