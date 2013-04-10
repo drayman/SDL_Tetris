@@ -1,0 +1,7 @@
+<map id="G" name="G">
+<area shape="rect" href="$table_8h.html" title="game/table.h" alt="" coords="95,83,191,112"/>
+<area shape="rect" href="$tetris_8cpp.html" title="game/tetris.cpp" alt="" coords="5,160,117,189"/>
+<area shape="rect" href="$tetris_8h.html" title="game/tetris.h" alt="" coords="175,160,271,189"/>
+<area shape="rect" href="$tetromino_8cpp.html" title="game/tetromino.cpp" alt="" coords="265,83,401,112"/>
+<area shape="rect" href="$main_8cpp.html" title="main.cpp" alt="" coords="185,237,260,267"/>
+</map>

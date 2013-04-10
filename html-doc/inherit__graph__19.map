@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" href="$classTexture.html" title="Texture" alt="" coords="5,32,69,61"/>
+<area shape="rect" href="$classBMP__Texture.html" title="BMP_Texture" alt="" coords="119,5,217,35"/>
+<area shape="rect" href="$classTGA__Texture.html" title="TGA_Texture" alt="" coords="120,59,216,88"/>
+</map>

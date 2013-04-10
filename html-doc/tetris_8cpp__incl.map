@@ -1,0 +1,20 @@
+<map id="G" name="G">
+<area shape="rect" href="$translate__animation_8h.html" title="animation/translate_animation.h" alt="" coords="5,160,211,189"/>
+<area shape="rect" href="$rotate__animation_8h.html" title="animation/rotate_animation.h" alt="" coords="155,237,341,267"/>
+<area shape="rect" href="$alpha__animation_8h.html" title="animation/alpha_animation.h" alt="" coords="285,160,472,189"/>
+<area shape="rect" href="$animated__text_8h.html" title="game/animated_text.h" alt="" coords="496,160,645,189"/>
+<area shape="rect" href="$texture__manager_8h.html" title="texture_manager.h" alt="" coords="961,315,1089,344"/>
+<area shape="rect" href="$cube__mesh_8h.html" title="mesh/cube_mesh.h" alt="" coords="1063,237,1199,267"/>
+<area shape="rect" href="$tetromino_8h.html" title="game/tetromino.h" alt="" coords="865,160,988,189"/>
+<area shape="rect" href="$key__values_8h.html" title="key_values.h" alt="" coords="1485,83,1584,112"/>
+<area shape="rect" href="$table_8h.html" title="game/table.h" alt="" coords="964,83,1060,112"/>
+<area shape="rect" href="$message__queue_8h.html" title="game/message_queue.h" alt="" coords="585,83,748,112"/>
+<area shape="rect" href="$animation_8h.html" title="animation/animation.h" alt="" coords="296,315,443,344"/>
+<area shape="rect" href="$font_8h.html" title="texture/font.h" alt="" coords="517,237,616,267"/>
+<area shape="rect" href="$resource__manager_8h.html" title="system/resource_manager.h" alt="" coords="771,392,957,421"/>
+<area shape="rect" href="$BMP__texture_8h.html" title="BMP_texture.h" alt="" coords="1032,392,1139,421"/>
+<area shape="rect" href="$texture_8h.html" title="texture.h" alt="" coords="1049,469,1121,499"/>
+<area shape="rect" href="$platform_8h.html" title="platform.h" alt="" coords="1045,547,1125,576"/>
+<area shape="rect" href="$mesh_8h.html" title="mesh.h" alt="" coords="1137,315,1201,344"/>
+<area shape="rect" href="$brick_8h.html" title="game/brick.h" alt="" coords="767,237,863,267"/>
+</map>

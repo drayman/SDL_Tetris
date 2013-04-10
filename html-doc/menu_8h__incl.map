@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" href="$texture_8h.html" title="texture/texture.h" alt="" coords="5,83,120,112"/>
+<area shape="rect" href="$button__mesh_8h.html" title="mesh/button_mesh.h" alt="" coords="144,83,288,112"/>
+<area shape="rect" href="$menu__values_8h.html" title="menu/menu_values.h" alt="" coords="387,83,531,112"/>
+<area shape="rect" href="$platform_8h.html" title="platform.h" alt="" coords="139,160,219,189"/>
+</map>

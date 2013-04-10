@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" href="$classAnimation.html" title="Animation" alt="" coords="5,59,85,88"/>
+<area shape="rect" href="$classAlphaAnimation.html" title="AlphaAnimation" alt="" coords="144,5,256,35"/>
+<area shape="rect" href="$classRotateAnimation.html" title="RotateAnimation" alt="" coords="141,59,259,88"/>
+<area shape="rect" href="$classTranslateAnimation.html" title="TranslateAnimation" alt="" coords="135,112,265,141"/>
+</map>

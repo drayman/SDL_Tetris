@@ -1,0 +1,9 @@
+<map id="G" name="G">
+<area shape="rect" href="$texture__manager_8h.html" title="texture_manager.h" alt="" coords="221,83,349,112"/>
+<area shape="rect" href="$log_8h.html" title="log/log.h" alt="" coords="405,83,475,112"/>
+<area shape="rect" href="$resource__manager_8h.html" title="system/resource_manager.h" alt="" coords="5,160,192,189"/>
+<area shape="rect" href="$BMP__texture_8h.html" title="BMP_texture.h" alt="" coords="216,160,323,189"/>
+<area shape="rect" href="$texture_8h.html" title="texture.h" alt="" coords="233,237,305,267"/>
+<area shape="rect" href="$platform_8h.html" title="platform.h" alt="" coords="229,315,309,344"/>
+<area shape="rect" href="$desktop__log_8h.html" title="desktop_log.h" alt="" coords="397,160,499,189"/>
+</map>
