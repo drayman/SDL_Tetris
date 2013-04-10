@@ -38,29 +38,19 @@ struct GameConfig {
 
     GameConfig() :
         fullscreen(true),
-        keyrepeat(true),
-        textures(true),
-        mystery(false),
+        enabled_keyrepeat(true),
+        disabled_textures(false),
+        disabled_mystery(true),
         done(false)
         {}
 
     bool fullscreen;
-    bool keyrepeat;
-    bool textures;
-    bool mystery;
+    bool enabled_keyrepeat;
+    bool disabled_textures;
+    bool disabled_mystery;
     bool done;
 } gConf;
 
-
-struct MenuConfig {         ///< This can be removed soon i freak out from it
-
-    MenuConfig() :
-        disabled_textures(false),
-        disabled_mystery(true)
-        {}
-    bool disabled_textures;
-    bool disabled_mystery;
-} mConf;
 
 float g_fYrot = 0;
 
@@ -150,17 +140,16 @@ void menu_update(ButtonValue menu_code)
         switch (menu_code)
         {
         case ButtonValue::OPTS_TEXTURES:
-            mConf.disabled_textures = gConf.textures;
-            gConf.textures = !gConf.textures;
-            tetris.setTextureDrawing(gConf.textures);
+            tetris.setTextureDrawing(gConf.disabled_textures);
+            gConf.disabled_textures = !gConf.disabled_textures;
             break;
         case ButtonValue::OPTS_MYSTERY:
-            mConf.disabled_mystery = gConf.mystery;
-            gConf.mystery = !gConf.mystery;
+           tetris.setMysteryBoxes(gConf.disabled_mystery);
+            gConf.disabled_mystery = !gConf.disabled_mystery;
             break;
         case ButtonValue::OPTS_KEYS:
-            gConf.keyrepeat = !gConf.keyrepeat;
-            tetris.setKeyRepeat(gConf.keyrepeat);
+            gConf.enabled_keyrepeat = !gConf.enabled_keyrepeat;
+            tetris.setKeyRepeat(gConf.enabled_keyrepeat);
             break;
         case ButtonValue::OPTS_FULLSCREEN:
             gConf.fullscreen = !gConf.fullscreen;
@@ -238,7 +227,7 @@ void render() {
 
 
     glDisable (GL_BLEND);
-    if (gConf.textures) {
+    if (!gConf.disabled_textures) {
 
         if (displayLayout.isLandscape())
             displayLayout.selectFull();
@@ -520,15 +509,15 @@ void build_menu()
 
     menu.addButton( MenuType::MISC,
         texmanager.get("menu/no.bmp"),
-        ButtonValue::NONE, 0, 1, 0, 2, &mConf.disabled_textures);
+        ButtonValue::NONE, 0, 1, 0, 2, &gConf.disabled_textures);
 
     menu.addButton( MenuType::MISC,
         texmanager.get("menu/no.bmp"),
-        ButtonValue::NONE, 1, 1, 1, 2, &mConf.disabled_mystery);
+        ButtonValue::NONE, 1, 1, 1, 2, &gConf.disabled_mystery);
 
     menu.addButton( MenuType::MISC,
         texmanager.get("menu/rotate.bmp"),
-        ButtonValue::NONE, 1, 0, 1, 1, &gConf.keyrepeat);
+        ButtonValue::NONE, 1, 0, 1, 1, &gConf.enabled_keyrepeat);
 
 
     menu.addButton( MenuType::SAVE,
@@ -708,8 +697,8 @@ int main(int argc, char **argv)
     build_menu();
 
     tetris.init();
-    tetris.setTextureDrawing(gConf.textures);
-    tetris.setKeyRepeat(gConf.keyrepeat);
+    tetris.setTextureDrawing(!gConf.disabled_textures);
+    tetris.setKeyRepeat(gConf.enabled_keyrepeat);
 
     /* Loop, drawing and checking events */
     while ( ! gConf.done ) {
@@ -770,10 +759,10 @@ int main(int argc, char **argv)
                             event.window.data2);
                     break;
                 case SDL_WINDOWEVENT_RESIZED:
-#                       ifdef MOBILE_DETECTED
+#                   ifdef MOBILE_DETECTED
                     displayLayout.activeMode(event.window.data1, event.window.data2);
                     init_control_buttons();
-#                       endif
+#                   endif
                     break;
                 case SDL_WINDOWEVENT_MINIMIZED:
                     SDL_Log("Window %d minimized", event.window.windowID);

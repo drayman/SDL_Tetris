@@ -70,9 +70,15 @@ void Tetris::setKeyRepeat(bool repeat)
 }
 
 
-void Tetris::setTextureDrawing(bool textures)
+void Tetris::setTextureDrawing(bool enable_textures)
 {
-    draw_textures = textures;
+    draw_textures = enable_textures;
+}
+
+
+void Tetris::setMysteryBoxes(bool enable_mystery_boxes)
+{
+    mystery_boxes = enable_mystery_boxes;
 }
 
 

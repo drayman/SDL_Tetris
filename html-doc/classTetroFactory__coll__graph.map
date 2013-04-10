@@ -1,4 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" href="$classTextureManager.html" title="{TextureManager\n|+ respath\l+ prefix\l|+ bind()\l&#45; load()\l}" alt="" coords="44,200,159,325"/>
-<area shape="rect" href="$classResourceManager.html" title="{ResourceManager\&lt; Texture \&gt;\n|# resources\l|+ add()\l+ get()\l+ clean()\l# load()\l}" alt="" coords="5,5,197,149"/>
-</map>

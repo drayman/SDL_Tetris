@@ -1,4 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" href="$classBMP__Texture.html" title="{BMP_Texture\n|+ SDL_surface\l|+ BMP_Texture()\l+ BMP_Texture()\l+ load()\l+ clear_image_data()\l+ ~BMP_Texture()\l}" alt="" coords="5,459,149,621"/>
-<area shape="rect" href="$classTGA__Texture.html" title="{TGA_Texture\n||+ TGA_Texture()\l+ TGA_Texture()\l+ load()\l+ clear_image_data()\l+ ~TGA_Texture()\l}" alt="" coords="173,459,317,621"/>
-</map>

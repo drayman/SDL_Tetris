@@ -21,6 +21,7 @@ public:
     void initTextures();
     void setKeyRepeat(bool repeat);
     void setTextureDrawing(bool textures);
+    void setMysteryBoxes(bool mystery);
     unsigned int getCurrentStage();
     bool update();
     void draw();
@@ -72,6 +73,7 @@ private:
     int curr_y;
 
     bool draw_textures;
+    bool mystery_boxes;
 
     unsigned int ticks_left;
     unsigned int stage;

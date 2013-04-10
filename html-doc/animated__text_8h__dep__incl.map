@@ -1,7 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" href="$message__queue_8cpp.html" title="game/message_queue.cpp" alt="" coords="5,83,181,112"/>
-<area shape="rect" href="$message__queue_8h.html" title="game/message_queue.h" alt="" coords="280,83,443,112"/>
-<area shape="rect" href="$tetris_8cpp.html" title="game/tetris.cpp" alt="" coords="187,160,299,189"/>
-<area shape="rect" href="$tetris_8h.html" title="game/tetris.h" alt="" coords="347,160,443,189"/>
-<area shape="rect" href="$main_8cpp.html" title="main.cpp" alt="" coords="357,237,432,267"/>
-</map>

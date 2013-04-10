@@ -1,3 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" href="$classFont.html" title="{Font\n|&#45; texture\l&#45; align\l&#45; plain\l&#45; cw\l&#45; ch\l&#45; dtx\l&#45; dty\l&#45; c_per_row\l&#45; upletters\l&#45; m_width\l&#45; m_height\l&#45; c_width\l&#45; c_height\l&#45; first_letter\l|+ Font()\l+ set_texture()\l+ set_align()\l+ set_plain()\l+ set_size()\l+ set_upper_font()\l+ draw_text()\l}" alt="" coords="9,5,137,448"/>
-</map>

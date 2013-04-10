@@ -1,5 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" href="$classAlphaAnimation.html" title="{AlphaAnimation\n|# r\l# g\l# b\l# a_src\l# a_diff\l|+ AlphaAnimation()\l# animate()\l}" alt="" coords="5,253,136,435"/>
-<area shape="rect" href="$classRotateAnimation.html" title="{RotateAnimation\n|# angle\l# axis\l# x\l# y\l# z\l|+ RotateAnimation()\l# animate()\l}" alt="" coords="160,253,296,435"/>
-<area shape="rect" href="$classTranslateAnimation.html" title="{TranslateAnimation\n|# x\l# y\l# z\l|+ TranslateAnimation()\l# animate()\l}" alt="" coords="320,272,472,416"/>
-</map>

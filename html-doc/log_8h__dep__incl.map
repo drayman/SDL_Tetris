@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" href="$main_8cpp.html" title="main.cpp" alt="" coords="5,83,80,112"/>
-<area shape="rect" href="$menu_8cpp.html" title="menu/menu.cpp" alt="" coords="128,83,243,112"/>
-<area shape="rect" href="$mesh_8cpp.html" title="mesh/mesh.cpp" alt="" coords="267,83,381,112"/>
-<area shape="rect" href="$font_8cpp.html" title="texture/font.cpp" alt="" coords="405,83,517,112"/>
-<area shape="rect" href="$texture_8cpp.html" title="texture/texture.cpp" alt="" coords="541,83,672,112"/>
-<area shape="rect" href="$texture__manager_8cpp.html" title="texture/texture_manager.cpp" alt="" coords="696,83,883,112"/>
-</map>

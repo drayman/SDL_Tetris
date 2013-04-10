@@ -1,3 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" href="$classTexture.html" title="{Texture\n|+ fileName\l+ imageData\l+ Bpp\l+ width\l+ height\l+ type\l+ format\l# initialized\l# texID\l|+ Texture()\l+ build()\l+ bind()\l+ reset()\l+ isInitialized()\l+ clear_image_data()\l+ load()\l+ ~Texture()\l# swap_BGR_RGB()\l# flip_y()\l}" alt="" coords="5,5,149,411"/>
-</map>
