@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
-	<ActiveTarget name="Debug-Win32" />
+	<ActiveTarget name="Debug-Linux64" />
 	<File name="../Source/animation/alpha_animation.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="46" topLine="0" />
 	</File>
@@ -34,10 +34,7 @@
 	<File name="../Source/game/brick.h" open="0" top="0" tabpos="0">
 		<Cursor position="1114" topLine="10" />
 	</File>
-	<File name="../Source/game/key_map.cpp" open="1" top="1" tabpos="4">
-		<Cursor position="523" topLine="10" />
-	</File>
-	<File name="../Source/game/key_map.h" open="1" top="0" tabpos="5">
+	<File name="../Source/game/key_map.h" open="0" top="0" tabpos="5">
 		<Cursor position="545" topLine="0" />
 	</File>
 	<File name="../Source/game/message_queue.cpp" open="0" top="0" tabpos="4">
@@ -50,13 +47,13 @@
 		<Cursor position="3496" topLine="192" />
 	</File>
 	<File name="../Source/game/table.h" open="0" top="0" tabpos="3">
-		<Cursor position="636" topLine="1" />
+		<Cursor position="868" topLine="14" />
 	</File>
 	<File name="../Source/game/tetris.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="4953" topLine="0" />
+		<Cursor position="1419" topLine="59" />
 	</File>
 	<File name="../Source/game/tetris.h" open="1" top="0" tabpos="3">
-		<Cursor position="663" topLine="7" />
+		<Cursor position="229" topLine="0" />
 	</File>
 	<File name="../Source/game/tetromino.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="1372" topLine="185" />
@@ -70,8 +67,17 @@
 	<File name="../Source/gfx/skybox.h" open="0" top="0" tabpos="4">
 		<Cursor position="278" topLine="0" />
 	</File>
+	<File name="../Source/keymap/keymap.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="39" topLine="0" />
+	</File>
+	<File name="../Source/keymap/keymap.h" open="0" top="0" tabpos="0">
+		<Cursor position="1945" topLine="30" />
+	</File>
+	<File name="../Source/log/log.h" open="0" top="0" tabpos="0">
+		<Cursor position="285" topLine="0" />
+	</File>
 	<File name="../Source/main.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="3029" topLine="104" />
+		<Cursor position="14930" topLine="406" />
 	</File>
 	<File name="../Source/menu/menu.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="3819" topLine="33" />
@@ -91,11 +97,11 @@
 	<File name="../Source/mesh/skybox_mesh.h" open="0" top="0" tabpos="0">
 		<Cursor position="1044" topLine="30" />
 	</File>
-	<File name="../Source/system/display.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="1916" topLine="36" />
+	<File name="../Source/system/display.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="1916" topLine="57" />
 	</File>
-	<File name="../Source/system/display.h" open="0" top="0" tabpos="0">
-		<Cursor position="298" topLine="0" />
+	<File name="../Source/system/display.h" open="1" top="1" tabpos="5">
+		<Cursor position="1439" topLine="24" />
 	</File>
 	<File name="../Source/system/resource_manager.h" open="0" top="0" tabpos="0">
 		<Cursor position="1262" topLine="0" />

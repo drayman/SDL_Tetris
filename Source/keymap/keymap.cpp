@@ -13,7 +13,9 @@ KeyMap::~KeyMap()
 
 void KeyMap::registerKey(KeyType key, unsigned int repeat_interval)
 {
-    key_store[static_cast<int>(key)] = new KeyPress(repeat_interval);
+    int key_id = static_cast<int>(key);
+    if (key_store[key_id] != NULL) delete key_store[key_id];
+    key_store[key_id] = new KeyPress(repeat_interval);
 }
 
 void KeyMap::update(unsigned int time_spent)
@@ -47,14 +49,16 @@ void KeyMap::pressKey(KeyType key)
 
 void KeyMap::releaseKey(KeyType key)
 {
-    key_store[static_cast<int>(key)]->released = true;
-    key_store[static_cast<int>(key)]->curr_time = 0;
+    int key_id = static_cast<int>(key);
+    key_store[key_id]->released = true;
+    key_store[key_id]->curr_time = 0;
 }
 
 unsigned int KeyMap::getKey(KeyType key)
 {
-    unsigned int temp = key_store[static_cast<int>(key)]->pressed;
-    key_store[static_cast<int>(key)]->pressed = 0;
+    int key_id = static_cast<int>(key);
+    unsigned int temp = key_store[key_id]->pressed;
+    key_store[key_id]->pressed = 0;
     return temp;
 }
 

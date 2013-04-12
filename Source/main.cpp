@@ -24,7 +24,7 @@ Skybox skybox;
 #include "mesh/panel_mesh.h"
 PanelMesh panel;
 
-#include "system/display.h"
+#include "game/display.h"
 DisplayLayout displayLayout;
 
 #include "game/tetris.h"

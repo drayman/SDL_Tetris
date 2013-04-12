@@ -1,3 +1,5 @@
+#include "system/view.h"
+
 class DisplayLayout {
 
 public:
@@ -53,11 +55,12 @@ public:
 
     GLuint windowWidth, windowHeight;          ///< Window dimensions
 
-    GLuint mainWidth, mainHeight;              ///< Length of panel(1/3) plus the main game are(2/3)
+    GLuint mainWidth, mainHeight;              ///< Length of panel(1/3) plus the main game area(2/3)
 
     GLuint controlWidth, controlHeight;        ///< Dimensions of the menu
 
 private:
+
 
     /// reinitializes the projection matrices
     void setSize();
@@ -68,11 +71,7 @@ private:
     /// Fullscren
     bool fullscreen;
 
-    /// Saved projection matrices
-    GLfloat PPFullMatrix[16];       ///< For fullscreen, skybox in landscape
-    GLfloat PPGameMatrix[16];       ///< The game area
-    GLfloat PPSquareMatrix[16];     ///< Square, used by Next element, portrait skybox
-    GLfloat POControlsMatrix[16];   ///< Control buttons
-    GLfloat POPanelMatrix[16];      ///< Floating panels
+    /// Saved projection matrices and viewports
+    View view;
 };
 

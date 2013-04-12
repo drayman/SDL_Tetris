@@ -175,7 +175,6 @@
 		<Unit filename="../Source/game/animated_text.cpp" />
 		<Unit filename="../Source/game/animated_text.h" />
 		<Unit filename="../Source/game/brick.h" />
-		<Unit filename="../Source/game/key_map.cpp" />
 		<Unit filename="../Source/game/key_map.h" />
 		<Unit filename="../Source/game/message_queue.cpp" />
 		<Unit filename="../Source/game/message_queue.h" />
@@ -187,6 +186,9 @@
 		<Unit filename="../Source/game/tetromino.h" />
 		<Unit filename="../Source/gfx/skybox.cpp" />
 		<Unit filename="../Source/gfx/skybox.h" />
+		<Unit filename="../Source/keymap/key_values.h" />
+		<Unit filename="../Source/keymap/keymap.cpp" />
+		<Unit filename="../Source/keymap/keymap.h" />
 		<Unit filename="../Source/log/desktop_log.cpp" />
 		<Unit filename="../Source/log/desktop_log.h" />
 		<Unit filename="../Source/log/log.h" />
