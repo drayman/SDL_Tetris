@@ -25,6 +25,9 @@ public:
     /// Base constructor, with animation duration/interval and repeat type
     Animation(int anim_duration, RepeatType repeat_type = RepeatType::NONE);
 
+    /// virtual destructor to avoid child class deletion problems
+    virtual ~Animation() {}
+
     /// Public method to update the animation's state
     /// An animation can be rewinded with negative parameter
     float transform(int time_spent);
