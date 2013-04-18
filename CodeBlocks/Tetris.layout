@@ -34,8 +34,11 @@
 	<File name="../Source/game/brick.h" open="0" top="0" tabpos="0">
 		<Cursor position="1114" topLine="10" />
 	</File>
-	<File name="../Source/game/key_map.h" open="0" top="0" tabpos="5">
-		<Cursor position="545" topLine="0" />
+	<File name="../Source/game/display.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="2492" topLine="76" />
+	</File>
+	<File name="../Source/game/display.h" open="1" top="0" tabpos="6">
+		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="../Source/game/message_queue.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="534" topLine="3" />
@@ -77,7 +80,7 @@
 		<Cursor position="285" topLine="0" />
 	</File>
 	<File name="../Source/main.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="14930" topLine="406" />
+		<Cursor position="497" topLine="0" />
 	</File>
 	<File name="../Source/menu/menu.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="3819" topLine="33" />
@@ -97,14 +100,11 @@
 	<File name="../Source/mesh/skybox_mesh.h" open="0" top="0" tabpos="0">
 		<Cursor position="1044" topLine="30" />
 	</File>
-	<File name="../Source/system/display.cpp" open="1" top="0" tabpos="4">
-		<Cursor position="1916" topLine="57" />
-	</File>
-	<File name="../Source/system/display.h" open="1" top="1" tabpos="5">
-		<Cursor position="1439" topLine="24" />
-	</File>
 	<File name="../Source/system/resource_manager.h" open="0" top="0" tabpos="0">
 		<Cursor position="1262" topLine="0" />
+	</File>
+	<File name="../Source/system/view.h" open="1" top="1" tabpos="5">
+		<Cursor position="1276" topLine="1" />
 	</File>
 	<File name="../Source/texture/font.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="4697" topLine="135" />

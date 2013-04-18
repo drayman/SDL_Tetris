@@ -9,12 +9,18 @@
 #endif
 
 
+// include SDL headers
+#include "SDL2/SDL.h"
+
+/*
 // include the correct GL headers
 #ifdef MOBILE_DETECTED
 #    include <GLES/gl.h>
 
 #else
 #    include <GL/gl.h>
+*/
+#include "SDL2/SDL_opengl.h"
 
 // Some windows GL implements GL_BGR, but does not define it...
 // cut from GL/glext.h
@@ -33,11 +39,6 @@
 #define GL_GENERATE_MIPMAP                0x8191
 #endif
 
-#endif
-
-
-
-// include SDL headers
-#include "SDL2/SDL.h"
+//#endif
 
 #endif //PLATFORM_H

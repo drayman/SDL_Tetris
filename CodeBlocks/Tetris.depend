@@ -10,10 +10,11 @@
 	"szejjelharapottalma_log_file.h"
 	"desktop_log.h"
 
-1362871491 /home/szeke/Desktop/DIGITAL/Project/Source/platform.h
+1366248037 /home/szeke/Desktop/DIGITAL/Project/Source/platform.h
+	"SDL2/SDL.h"
 	<GLES/gl.h>
 	<GL/gl.h>
-	"SDL2/SDL.h"
+	"SDL2/SDL_opengl.h"
 
 1360286356 /home/szeke/Desktop/DIGITAL/Project/Source/desktop_log.h
 	<stdarg.h>
@@ -1785,7 +1786,7 @@
 1365750347 /home/szeke/Desktop/DIGITAL/Project/Source/game/display.h
 	"system/view.h"
 
-1365752356 /home/szeke/Desktop/DIGITAL/Project/Source/system/view.h
+1366241876 /home/szeke/Desktop/DIGITAL/Project/Source/system/view.h
 	<map>
 	"system/view_values.h"
 
@@ -1794,4 +1795,32 @@
 1365751104 source:/home/szeke/Desktop/DIGITAL/Project/Source/system/view.cpp
 	"platform.h"
 	"view.h"
+
+1361513099 /home/szeke/Desktop/DIGITAL/Project/Linux64/include/SDL2/SDL_opengl.h
+	"SDL_config.h"
+	<windows.h>
+	<OpenGL/gl.h>
+	<GL/gl.h>
+	<windows.h>
+	<stddef.h>
+	<inttypes.h>
+	<inttypes.h>
+	<inttypes.h>
+	<stdint.h>
+	<stdint.h>
+	<inttypes.h>
+
+1361510075 /home/szeke/Desktop/DIGITAL/Project/Win32/include/SDL2/SDL_opengl.h
+	"SDL_config.h"
+	<windows.h>
+	<OpenGL/gl.h>
+	<GL/gl.h>
+	<windows.h>
+	<stddef.h>
+	<inttypes.h>
+	<inttypes.h>
+	<inttypes.h>
+	<stdint.h>
+	<stdint.h>
+	<inttypes.h>
 

@@ -1,6 +1,8 @@
 #include "log/log.h"
 #include "font.h"
 
+#include <vector>
+
 void Font::set_texture( const std::shared_ptr<Texture> texture,
            const GLuint m_width, const GLuint m_height,
            const GLuint c_width, const GLuint c_height,
@@ -135,50 +137,59 @@ void Font::draw_text(
         GLfloat tx = float(col * c_width)/float(m_width);
         GLfloat ty = float(row * c_height)/float(m_height);
 
-        GLfloat *Vertices; // Can't be declared inside in a switch.
-        // No problem, it's time for lovely compund literals...
+        // Problem 1:
+        // Vertices can't be declared inside in a switch without introducing ugly scope brackets
+        // No problem, it's time for lovely compound literals...
         // We could solve it with vector, or c++0x initializer list as well
+        // Problem 2
+        // after upgrading to mingw gcc 4.8
+        // http://gcc.gnu.org/bugzilla/show_bug.cgi?id=53220
+        // on gcc 4.6 still getting error: assigning to an array from an initializer list,
+        // however it should work: http://gcc.gnu.org/gcc-4.6/cxx0x_status.html
+        // So, vectorize...
+
+        std::vector<GLfloat> Vertices;
 
         switch (font_direction) {
             case FontPlain::XY_2D:
             case FontPlain::UNDEFINED:
-                Vertices = (GLfloat[]){
+                Vertices = {
                     c_x-offset_w,     c_y-offset_h+c_h,
                     c_x-offset_w,     c_y-offset_h,
                     c_x-offset_w+c_w, c_y-offset_h,
                     c_x-offset_w+c_w, c_y-offset_h+c_h
                 };
-                glVertexPointer(2, GL_FLOAT, 0, Vertices);
+                glVertexPointer(2, GL_FLOAT, 0, &Vertices[0]);
                 break;
 
             case FontPlain::XY_3D:
-                Vertices = (GLfloat[]){
+                Vertices = {
                     c_x-offset_w,     c_y-offset_h+c_h, 0.0f,
                     c_x-offset_w,     c_y-offset_h,     0.0f,
                     c_x-offset_w+c_w, c_y-offset_h,     0.0f,
                     c_x-offset_w+c_w, c_y-offset_h+c_h, 0.0f
                 };
-                glVertexPointer(3, GL_FLOAT, 0, Vertices);
+                glVertexPointer(3, GL_FLOAT, 0, &Vertices[0]);
                 break;
 
             case FontPlain::XZ_3D:
-                Vertices = (GLfloat[]){
+                Vertices = {
                     c_x-offset_w,     0.0f,  c_y-offset_h+c_h,
                     c_x-offset_w,     0.0f,  c_y-offset_h,
                     c_x-offset_w+c_w, 0.0f,  c_y-offset_h,
                     c_x-offset_w+c_w, 0.0f,  c_y-offset_h+c_h
                 };
-                glVertexPointer(3, GL_FLOAT, 0, Vertices);
+                glVertexPointer(3, GL_FLOAT, 0, &Vertices[0]);
                 break;
 
             case FontPlain::YZ_3D:
-                Vertices = (GLfloat[]){
+                Vertices = {
                     0.0f, c_x-offset_w,     c_y-offset_h+c_h,
                     0.0f, c_x-offset_w,     c_y-offset_h,
                     0.0f, c_x-offset_w+c_w, c_y-offset_h,
                     0.0f, c_x-offset_w+c_w, c_y-offset_h+c_h
                 };
-                glVertexPointer(3, GL_FLOAT, 0, Vertices);
+                glVertexPointer(3, GL_FLOAT, 0, &Vertices[0]);
                 break;
         }
 

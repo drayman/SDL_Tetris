@@ -14,7 +14,7 @@ KeyMap::~KeyMap()
 void KeyMap::registerKey(KeyType key, unsigned int repeat_interval)
 {
     int key_id = static_cast<int>(key);
-    if (key_store[key_id] != NULL) delete key_store[key_id];
+    if (key_store[key_id] != nullptr ) delete key_store[key_id];
     key_store[key_id] = new KeyPress(repeat_interval);
 }
 

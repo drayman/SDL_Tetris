@@ -175,7 +175,8 @@
 		<Unit filename="../Source/game/animated_text.cpp" />
 		<Unit filename="../Source/game/animated_text.h" />
 		<Unit filename="../Source/game/brick.h" />
-		<Unit filename="../Source/game/key_map.h" />
+		<Unit filename="../Source/game/display.cpp" />
+		<Unit filename="../Source/game/display.h" />
 		<Unit filename="../Source/game/message_queue.cpp" />
 		<Unit filename="../Source/game/message_queue.h" />
 		<Unit filename="../Source/game/table.cpp" />
@@ -203,11 +204,9 @@
 		<Unit filename="../Source/mesh/panel_mesh.h" />
 		<Unit filename="../Source/mesh/skybox_mesh.h" />
 		<Unit filename="../Source/platform.h" />
-		<Unit filename="../Source/system/display.cpp" />
-		<Unit filename="../Source/system/display.h" />
-		<Unit filename="../Source/system/projection.cpp" />
-		<Unit filename="../Source/system/projection.h" />
 		<Unit filename="../Source/system/resource_manager.h" />
+		<Unit filename="../Source/system/view.cpp" />
+		<Unit filename="../Source/system/view.h" />
 		<Unit filename="../Source/texture/BMP_texture.cpp" />
 		<Unit filename="../Source/texture/BMP_texture.h" />
 		<Unit filename="../Source/texture/TGA_texture.cpp" />
