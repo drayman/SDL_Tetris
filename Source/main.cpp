@@ -401,6 +401,8 @@ void createWindow()
         exit(1);
     }
 
+	//exit(0);
+
     // Get current display mode of all displays.
     int display;
     for(display=0; display < SDL_GetNumVideoDisplays(); ++display) {
@@ -556,9 +558,13 @@ void load_textures_draw(int ratio)
 void load_textures()
 {
 #	ifdef DESKTOP_DETECTED
-    texmanager.respath="../../Common/";
+#   ifdef DEBUG_MODE
+    texmanager.respath="../../../../Textures/";
 #   else
-    texmanager.respath="";
+    texmanager.respath="Textures/";
+#   endif
+#   else
+    texmanager.respath="Textures/";
 #   endif
 
     g_Font.set_texture( texmanager.get("font.bmp"), 256, 256, 20, 26, ' ' );

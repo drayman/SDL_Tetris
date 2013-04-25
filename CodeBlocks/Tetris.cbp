@@ -6,45 +6,69 @@
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
-			<Target title="Debug-Linux64">
-				<Option output="../Linux64/bin/Tetris" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="../Linux64/bin/" />
-				<Option object_output="../Linux64/obj/" />
+			<Target title="Debug-GCC 4.6">
+				<Option output="../Linux/x86_64/gcc-4.6/bin/Tetris" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="../Linux/x86_64/gcc-4.6/bin/" />
+				<Option object_output="../Linux/x86_64/gcc-4.6/obj/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-g" />
 					<Add option="-std=c++0x" />
+					<Add option="-g" />
 					<Add option="-D_REENTRANT" />
 					<Add option="-DDEBUG_MODE" />
-					<Add directory="../Linux64/include" />
+					<Add directory="../Linux/x86_64/gcc-4.6/include" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../Linux64/include" />
+					<Add directory="../Linux/x86_64/gcc-4.6/include" />
 				</ResourceCompiler>
 				<Linker>
 					<Add option="-lSDL2" />
 					<Add option="-lGL" />
 					<Add option="-lpthread" />
-					<Add option="-Wl,-rpath -Wl,../lib" />
-					<Add directory="../Linux64/lib" />
+					<Add option="-Wl,-rpath,../lib" />
+					<Add directory="../Linux/x86_64/gcc-4.6/lib" />
 				</Linker>
 			</Target>
-			<Target title="Debug-Win32">
-				<Option output="../Win32/bin/Tetris.exe" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="../Win32/bin/" />
-				<Option object_output="../Win32/obj/" />
+			<Target title="Debug-GCC 4.8">
+				<Option output="../Linux/x86_64/gcc-4.8/bin/Tetris" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="../Linux/x86_64/gcc-4.8/bin/" />
+				<Option object_output="../Linux/x86_64/gcc-4.8/obj/" />
 				<Option type="1" />
-				<Option compiler="mingw32_compiler" />
+				<Option compiler="gnu_gcc_compiler_48" />
 				<Compiler>
-					<Add option="-g" />
 					<Add option="-std=c++0x" />
-					<Add option="-Dmain=SDL_main" />
+					<Add option="-g" />
+					<Add option="-D_REENTRANT" />
 					<Add option="-DDEBUG_MODE" />
-					<Add directory="../Win32/include" />
+					<Add directory="../Linux/x86_64/gcc-4.8/include" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../Win32/include" />
+					<Add directory="../Linux/x86_64/gcc-4.8/include" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-lSDL2" />
+					<Add option="-lGL" />
+					<Add option="-lpthread" />
+					<Add option="-Wl,-rpath,../lib" />
+					<Add directory="../Linux/x86_64/gcc-4.8/lib" />
+				</Linker>
+			</Target>
+			<Target title="Debug-MinGW32 4.8">
+				<Option output="../Windows/i686/mingw-4.8/bin/Tetris.exe" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="../Windows/i686/mingw-4.8/bin/" />
+				<Option object_output="../Windows/i686/mingw-4.8/obj/" />
+				<Option type="1" />
+				<Option compiler="mingw32" />
+				<Compiler>
+					<Add option="-std=c++11" />
+					<Add option="-g" />
+					<Add option="-Dmain=SDL_main" />
+					<Add option="-DDEBUG_MODE" />
+					<Add directory="../Windows/i686/mingw-4.8/include" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../Windows/i686/mingw-4.8/include" />
 				</ResourceCompiler>
 				<Linker>
 					<Add option="-lmingw32" />
@@ -53,24 +77,24 @@
 					<Add option="-lopengl32" />
 					<Add option="-static-libstdc++" />
 					<Add option="-static-libgcc" />
-					<Add directory="../Win32/lib" />
+					<Add directory="../Windows/i686/mingw-4.8/lib" />
 				</Linker>
 			</Target>
-			<Target title="Debug-Win64">
-				<Option output="../Win64/bin/Tetris.exe" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="../Win64/bin/" />
-				<Option object_output="../Win64/obj/" />
+			<Target title="Debug-MinGW64 4.8">
+				<Option output="../Windows/x86_64/mingw-4.8/bin/Tetris.exe" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="../Windows/x86_64/mingw-4.8/bin/" />
+				<Option object_output="../Windows/x86_64/mingw-4.8/obj/" />
 				<Option type="1" />
-				<Option compiler="mingw64_compiler" />
+				<Option compiler="mingw64" />
 				<Compiler>
+					<Add option="-std=c++11" />
 					<Add option="-g" />
-					<Add option="-std=c++0x" />
 					<Add option="-Dmain=SDL_main" />
 					<Add option="-DDEBUG_MODE" />
-					<Add directory="../Win64/include" />
+					<Add directory="../Windows/x86_64/mingw-4.8/include" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../Win64/include" />
+					<Add directory="../Windows/x86_64/mingw-4.8/include" />
 				</ResourceCompiler>
 				<Linker>
 					<Add option="-lmingw32" />
@@ -79,47 +103,71 @@
 					<Add option="-lopengl32" />
 					<Add option="-static-libstdc++" />
 					<Add option="-static-libgcc" />
-					<Add directory="../Win64/lib" />
+					<Add directory="../Windows/x86_64/mingw-4.8/lib" />
 				</Linker>
 			</Target>
-			<Target title="Release-Linux64">
-				<Option output="../Linux64/bin/Tetris" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="../Linux64/bin/" />
-				<Option object_output="../Linux64/obj/" />
+			<Target title="Release-GCC 4.6">
+				<Option output="../../Binaries/Linux/x86_64/gcc-4.6/Tetris" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="../../Binaries/Linux/x86_64/gcc-4.6/" />
+				<Option object_output="../../Binaries/Linux/x86_64/gcc-4.6/obj/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
 					<Add option="-std=c++0x" />
 					<Add option="-D_REENTRANT" />
-					<Add directory="../Linux64/include" />
+					<Add directory="../Linux/x86_64/gcc-4.6/include" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../Linux64/include" />
+					<Add directory="../Linux/x86_64/gcc-4.6/include" />
 				</ResourceCompiler>
 				<Linker>
 					<Add option="-s" />
 					<Add option="-lSDL2" />
 					<Add option="-lGL" />
 					<Add option="-lpthread" />
-					<Add option="-Wl,-rpath -Wl,../lib" />
-					<Add directory="../Linux64/lib" />
+					<Add option="-Wl,-rpath,./lib" />
+					<Add directory="../Linux/x86_64/gcc-4.6/lib" />
 				</Linker>
 			</Target>
-			<Target title="Release-Win32">
-				<Option output="../Win32/bin/Tetris.exe" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="../Win32/bin/" />
-				<Option object_output="../Win32/obj/" />
+			<Target title="Release-GCC 4.8">
+				<Option output="../../Binaries/Linux/x86_64/gcc-4.8/Tetris" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="../../Binaries/Linux/x86_64/gcc-4.8/" />
+				<Option object_output="../../Binaries/Linux/x86_64/gcc-4.8/obj/" />
 				<Option type="1" />
-				<Option compiler="mingw32_compiler" />
+				<Option compiler="gnu_gcc_compiler_48" />
 				<Compiler>
 					<Add option="-O2" />
 					<Add option="-std=c++0x" />
-					<Add option="-Dmain=SDL_main" />
-					<Add directory="../Win32/include" />
+					<Add option="-D_REENTRANT" />
+					<Add directory="../Linux/x86_64/gcc-4.8/include" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../Win32/include" />
+					<Add directory="../Linux/x86_64/gcc-4.8/include" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-lSDL2" />
+					<Add option="-lGL" />
+					<Add option="-lpthread" />
+					<Add option="-Wl,-rpath,./lib" />
+					<Add directory="../Linux/x86_64/gcc-4.8/lib" />
+				</Linker>
+			</Target>
+			<Target title="Release-MinGW32 4.8">
+				<Option output="../../Binaries/Windows/i686/mingw-4.8/Tetris.exe" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="../../Binaries/Windows/i686/mingw-4.8/" />
+				<Option object_output="../../Binaries/Windows/i686/mingw-4.8/obj/" />
+				<Option type="1" />
+				<Option compiler="mingw32" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-std=c++11" />
+					<Add option="-Dmain=SDL_main" />
+					<Add directory="../Windows/i686/mingw-4.8/include" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../Windows/i686/mingw-4.8/include" />
 				</ResourceCompiler>
 				<Linker>
 					<Add option="-s" />
@@ -129,23 +177,23 @@
 					<Add option="-lopengl32" />
 					<Add option="-static-libstdc++" />
 					<Add option="-static-libgcc" />
-					<Add directory="../Win32/lib" />
+					<Add directory="../Windows/i686/mingw-4.8/lib" />
 				</Linker>
 			</Target>
-			<Target title="Release-Win64">
-				<Option output="../Win64/bin/Tetris.exe" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="../Win64/bin/" />
-				<Option object_output="../Win64/obj/" />
+			<Target title="Release-MingW64 4.8">
+				<Option output="../../Binaries/Windows/x86_64/mingw-4.8/Tetris.exe" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="../../Binaries/Windows/x86_64/mingw-4.8/" />
+				<Option object_output="../../Binaries/Windows/x86_64/mingw-4.8/obj/" />
 				<Option type="1" />
-				<Option compiler="mingw64_compiler" />
+				<Option compiler="mingw64" />
 				<Compiler>
 					<Add option="-O2" />
-					<Add option="-std=c++0x" />
+					<Add option="-std=c++11" />
 					<Add option="-Dmain=SDL_main" />
-					<Add directory="../Win64/include" />
+					<Add directory="../Windows/x86_64/mingw-4.8/include" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../Win64/include" />
+					<Add directory="../Windows/x86_64/mingw-4.8/include" />
 				</ResourceCompiler>
 				<Linker>
 					<Add option="-s" />
@@ -155,7 +203,7 @@
 					<Add option="-lopengl32" />
 					<Add option="-static-libstdc++" />
 					<Add option="-static-libgcc" />
-					<Add directory="../Win64/lib" />
+					<Add directory="../Windows/x86_64/mingw-4.8/lib" />
 				</Linker>
 			</Target>
 		</Build>
